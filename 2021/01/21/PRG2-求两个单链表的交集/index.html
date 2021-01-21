@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Wablers">
+    
+    <title>
+        
+            PRG2.求两个单链表的交集 |
+        
+        Wablers
+    </title>
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.3.0/source/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en"};
+    KEEP.theme_config = {"toc":{"enable":false,"number":false,"expand_all":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"人之所以言之凿凿，是因为知道的太少。"},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":false},"code_copy":{"enable":false,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.3.0"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days age","week":"%s weeks age","month":"%s months age","year":"%s years age"};
+  </script>
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            <a class="logo-title" href="/">
+                Wablers
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content normal-code-theme">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">PRG2.求两个单链表的交集</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.svg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span>Wablers</span>
+                        <span class="level">Lv1</span>
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i> 2021-01-21 19:57:20
+    </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AE%97%E6%B3%95/">数据结构算法</a>
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/C/">C</a>
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i> <span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <p>设计一个函数 void  Intersection(List La, List Lb) , 其功能是求Lb和La的交集，且将交集的结果置于La中，其中La和Lb的元素均为严格递增有序排列，求交集后的La的元素也为严格递增有序排列。La和Lb是带头结点的单向链表。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">//设计一个函数</span></span><br><span class="line"><span class="comment">/*void  Intersection(List La, List Lb)</span></span><br><span class="line"><span class="comment">其功能是求Lb和La的交集，且将交集的结果置于La中，其中La和Lb的元素均为严格递增有序排列，求交集后的La的元素也为严格递增有序排列。La和Lb是带头结点的单向链表。*/</span></span><br><span class="line"><span class="comment">//其中List是如下结构体：</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">T_Node</span> &#123;</span><span class="comment">//结点类型定义</span></span><br><span class="line">	<span class="keyword">int</span> d;<span class="comment">//结点中的数据data</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">T_Node</span>* <span class="title">next</span>;</span><span class="comment">//指向下一个结点的指针</span></span><br><span class="line">&#125; Node, * List;</span><br><span class="line"><span class="comment">//函数中，不得生成新的结点，尽量利用已经有的结点。</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Intersection</span><span class="params">(List La, List Lb)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	Node* pre = La;<span class="comment">//指针pre指向头结点</span></span><br><span class="line">	Node* p1 = La-&gt;next;<span class="comment">//指针p1指向首元结点</span></span><br><span class="line">	Node* p2 = Lb-&gt;next;<span class="comment">//指针p2指向首元结点</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span> (p1 != <span class="literal">NULL</span> &amp;&amp; p2 != <span class="literal">NULL</span>)<span class="comment">//当两个链表均不为空时</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (p1-&gt;d == p2-&gt;d)<span class="comment">//如果指针p1、p2分别指向的结点的值想等</span></span><br><span class="line">		&#123;</span><br><span class="line">			pre = p1;<span class="comment">//指针pre指向指针p1所指的结点</span></span><br><span class="line">			p1 = p1-&gt;next;<span class="comment">//指针p1后移一位</span></span><br><span class="line">			p2 = p2-&gt;next;<span class="comment">//指针p2后移一位</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (p1-&gt;d &gt; p2-&gt;d)<span class="comment">//如果指针p1所指的结点的值大于指针p2所指的结点的值</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">do</span> &#123;</span><br><span class="line">				p2 = p2-&gt;next;<span class="comment">//指针p2后移</span></span><br><span class="line">			&#125; <span class="keyword">while</span> (p2 != <span class="literal">NULL</span> &amp;&amp; p1-&gt;d &gt; p2-&gt;d);<span class="comment">//当指针p2所指的结点不为空或者指针p1所指的结点的值大于指针p2所指的结点的值时</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span><span class="comment">//或者即指针p1所指的结点的值小于指针p2所指的结点的值</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">do</span> &#123;</span><br><span class="line">				p1 = p1-&gt;next;<span class="comment">//指针p1后移一位</span></span><br><span class="line">				<span class="built_in">free</span>(pre-&gt;next);<span class="comment">//释放指针pre的next结点</span></span><br><span class="line">				pre-&gt;next = p1;<span class="comment">//将指针p1所指结点链接到指针pre所指结点后</span></span><br><span class="line">			&#125; <span class="keyword">while</span> (p1 != <span class="literal">NULL</span> &amp;&amp; p1-&gt;d &lt; p2-&gt;d);<span class="comment">//当指针p1所指结点不为空或者指针p1所指结点的值小于指针p2所指结点时</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (p1 != <span class="literal">NULL</span>)<span class="comment">//如果指针p1所指结点不为空，即La链表尚未遍历完</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">do</span> &#123;</span><br><span class="line">			p1 = p1-&gt;next;<span class="comment">//指针p1后移一位</span></span><br><span class="line">			<span class="built_in">free</span>(pre-&gt;next);<span class="comment">//释放此时指针pre的next结点</span></span><br><span class="line">			pre-&gt;next = p1;<span class="comment">//将指针p1所指结点链接到指针pre所指结点之后</span></span><br><span class="line">		&#125; <span class="keyword">while</span> (p1 != <span class="literal">NULL</span>);<span class="comment">//当指针p1所指结点不为空时</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//创建头指针为la, lb的两个链表</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">createlink</span><span class="params">(List* pla, List* plb)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line">	Node* p;</span><br><span class="line"></span><br><span class="line">	*pla = (Node*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Node));     <span class="comment">//创建头结点</span></span><br><span class="line">	p = *pla;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">1</span>; i &lt;= <span class="number">10</span>; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		p-&gt;next = (Node*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Node));</span><br><span class="line">		p = p-&gt;next;</span><br><span class="line">		p-&gt;d = i * <span class="number">2</span>;</span><br><span class="line">		p-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	*plb = (Node*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Node));     <span class="comment">//创建头结点</span></span><br><span class="line">	p = *plb;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">1</span>; i &lt;= <span class="number">8</span>; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		p-&gt;next = (Node*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Node));</span><br><span class="line">		p = p-&gt;next;</span><br><span class="line">		p-&gt;d = i + <span class="number">6</span>;</span><br><span class="line">		p-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//如下的main函数执行后</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line"></span><br><span class="line">	List la, lb;</span><br><span class="line">	Node* p;</span><br><span class="line"></span><br><span class="line">	createlink(&amp;la, &amp;lb);</span><br><span class="line">	Intersection(la, lb);</span><br><span class="line">	p = la-&gt;next;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">while</span> (p != <span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%4d&quot;</span>, p-&gt;d);</span><br><span class="line">		p = p-&gt;next;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*执行的结果为</span></span><br><span class="line"><span class="comment">8  10  12  14*/</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+        </div>
+
+        
+
+        
+            <div class="article-nav">
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2021/01/21/PRG1-%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E9%80%92%E5%87%8F%E9%A1%BA%E5%BA%8F%E8%A1%A8/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">PRG1.合并两个递减顺序表</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span> -
+            
+            2021 <i class="fas fa-heart icon-animate"></i> <a href="/">Wablers</a>
+        </div>
+        
+            <script async  src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        Visitor Count <span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        Totalview <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a> | Theme <a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.3.0</a>
+        </div>
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.3.0/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.3.0/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.3.0/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.3.0/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.3.0/source/js/dark-light-toggle.js"></script>
+
+
+
+
+
+
+
+<div class="post-scripts">
+    
+</div>
+
+
+
+</body>
+</html>
