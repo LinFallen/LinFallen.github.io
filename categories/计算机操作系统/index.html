@@ -9,7 +9,7 @@
     
     <title>
         
-            04-管程 |
+            Category: 计算机操作系统 |
         
         Wablers
     </title>
@@ -72,7 +72,7 @@
                         </li>
                     
                         <li class="menu-item">
-                            <a class=""
+                            <a class="active"
                                href="/categories"
                             >
                                 CATEGORIES
@@ -105,7 +105,7 @@
                 </li>
             
                 <li class="drawer-menu-item flex-center">
-                    <a class=""
+                    <a class="active"
                        href="/categories">CATEGORIES</a>
                 </li>
             
@@ -125,137 +125,63 @@
 
                 
                     <div class="fade-in-down-animation">
-    <div class="article-content-container">
-
-        <div class="article-title">
-            <span class="title-hover-animation">04-管程</span>
+    <div class="category-container">
+        <div class="category-name">
+            <i class="fas fa-folder"></i> 计算机操作系统 (4)
         </div>
-
-        
-            <div class="article-header">
-                <div class="avatar">
-                    <img src="/images/avatar.svg">
-                </div>
-                <div class="info">
-                    <div class="author">
-                        <span>Wablers</span>
-                        <span class="level">Lv2</span>
-                    </div>
-                    <div class="meta-info">
-                        <div class="article-meta-info">
-    <span class="article-date article-meta-item">
-        <i class="fas fa-edit"></i> 2021-04-01 20:58:48
-    </span>
+        <div class="category-post-list">
+            
+<div class="archive-list-container">
     
-        <span class="article-categories article-meta-item">
-            <i class="fas fa-folder"></i>
-            <ul>
+        <section class="archive-item">
+            <div class="archive-item-header">
+                <span class="archive-year">2021</span>
+                <span class="archive-year-post-count">(4)</span>
+            </div>
+            <ul class="article-list">
                 
-                    <li>
-                        <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">计算机操作系统</a>
+                    <li class="article-item">
+                        <a class="article-title"
+                           href="/2021/04/01/04-%E7%AE%A1%E7%A8%8B/"
+                        >04-管程</a>
+                        <span class="article-date">04-01</span>
+                    </li>
+                
+                    <li class="article-item">
+                        <a class="article-title"
+                           href="/2021/04/01/03-%E5%A4%84%E7%90%86%E6%9C%BA%E8%B0%83%E5%BA%A6/"
+                        >03-处理机调度</a>
+                        <span class="article-date">04-01</span>
+                    </li>
+                
+                    <li class="article-item">
+                        <a class="article-title"
+                           href="/2021/04/01/02-%E7%BA%BF%E7%A8%8B%E4%B8%8E%E8%BF%9B%E7%A8%8B/"
+                        >02-线程与进程</a>
+                        <span class="article-date">04-01</span>
+                    </li>
+                
+                    <li class="article-item">
+                        <a class="article-title"
+                           href="/2021/04/01/01-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/"
+                        >01-操作系统基本概念</a>
+                        <span class="article-date">04-01</span>
                     </li>
                 
             </ul>
-        </span>
-    
-    
-        <span class="article-tags article-meta-item">
-            <i class="fas fa-tags"></i>
-            <ul>
-                
-                    <li>
-                        <a href="/tags/%E6%A6%82%E5%BF%B5%E8%AF%A6%E8%BF%B0/">概念详述</a>
-                    </li>
-                
-                    <li>
-                        | <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">计算机操作系统</a>
-                    </li>
-                
-            </ul>
-        </span>
-    
-
-    
-    
-    
-    
-        <span class="article-pv article-meta-item">
-            <i class="fas fa-eye"></i> <span id="busuanzi_value_page_pv"></span>
-        </span>
+        </section>
     
 </div>
 
-                    </div>
-                </div>
-            </div>
-        
-
-        <div class="article-content markdown-body">
-            <ol>
-<li><p>为什么引入管程</p>
-<ul>
-<li>信号量机制存在的问题：编写程序困难，易出错<br>由于这个原因，人们想设计一种机制，让程序员编写程序时不在需要关注复杂的PV操作</li>
-</ul>
-</li>
-<li><p>定义和基本操作</p>
-<ul>
-<li><p>管程是一种特殊的软件模块，由下列部分组成</p>
-<ol>
-<li>局部于管程的共享数据结构说明</li>
-<li>对该数据结构进行操作的一组过程（函数）</li>
-<li>对局部于管程的共享数据结构设置初始值的语句</li>
-<li>管程有一个名字</li>
-</ol>
-</li>
-<li><p>基本特征</p>
-<ol>
-<li>局部于管程的数据只能被局部于管程的过程所访问</li>
-<li>一个过程只有通过调用管程内的过程（函数）才能进入管程访问共享数据<br> （也就是说管程只能通过管程内部的函数来进行访问）</li>
-<li>每次仅允许一个进程在管程内执行某个内部过程</li>
-</ol>
-</li>
-<li><p>管程中会设置条件标量和等待唤醒操作，以解决同步问题，同时管程也能很好的处理互斥的问题</p>
-</li>
-<li><p>引入管程的目的：更加方便的实现进程的互斥和同步</p>
-<ol>
-<li>需要在管程中定义共享数据</li>
-<li>需要定义访问数据的“入口”——其实就是函数</li>
-<li>只有通过“入口”才能访问共享数据</li>
-<li>管程中有很多入口，但是每次只能开放其中一个，并且只能让一个线程或线程进入（这种互斥是由编译<br> 器实现的，不需要程序员关心）</li>
-<li>可在管程中设置条件变量以及等待/唤醒操作已解决同步问题。可以让进程等待或线程（此时进程需要释放<br> 管程的话使用权，“入口”），也可以通过唤醒将进程唤醒</li>
-</ol>
-</li>
-</ul>
-</li>
-</ol>
-
         </div>
+    </div>
+    <div class="category-paginator">
+        <div class="paginator">
+    
 
-        
+    
+</div>
 
-        
-            <div class="article-nav">
-                
-                
-                    <div class="article-next">
-                        <a class="next"
-                           rel="next"
-                           href="/2021/04/01/03-%E5%A4%84%E7%90%86%E6%9C%BA%E8%B0%83%E5%BA%A6/"
-                        >
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">03-处理机调度</span>
-                                <span class="post-nav-item">Next posts</span>
-                            </span>
-                            <span class="right arrow-icon flex-center">
-                              <i class="fas fa-chevron-right"></i>
-                            </span>
-                        </a>
-                    </div>
-                
-            </div>
-        
-
-        
     </div>
 </div>
 
@@ -299,23 +225,6 @@
         </div>
     </div>
 
-    
-        <div class="post-tools">
-            <div class="post-tools-container">
-    <ul class="tools-list">
-        <!-- TOC aside toggle -->
-        
-            <li class="tools-item page-aside-toggle">
-                <i class="fas fa-outdent"></i>
-            </li>
-        
-
-        <!-- go comment -->
-        
-    </ul>
-</div>
-
-        </div>
     
 
     <div class="right-bottom-side-tools">
@@ -362,14 +271,6 @@
     </div>
 
     
-        <aside class="page-aside">
-            <div class="post-toc-wrap">
-    <div class="post-toc">
-        
-    </div>
-</div>
-        </aside>
-    
 
     <div class="image-viewer-container">
     <img src="">
@@ -393,8 +294,6 @@
 
 
 <div class="post-scripts">
-    
-        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.3.0/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.3.0/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.3.0/source/js/toc.js"></script>
     
 </div>
 
