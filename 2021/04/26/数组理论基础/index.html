@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Wablers">
+    
+    <title>
+        
+            数组理论基础 |
+        
+        Wablers
+    </title>
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.3.0/source/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true},"style":{"primary_color":"#0066cc","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"人之所以言之凿凿，是因为知道的太少。"},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":false},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.3.0"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days age","week":"%s weeks age","month":"%s months age","year":"%s years age"};
+  </script>
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            <a class="logo-title" href="/">
+                Wablers
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                CATEGORIES
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">CATEGORIES</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content normal-code-theme">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">数组理论基础</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.svg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span>Wablers</span>
+                        <span class="level">Lv2</span>
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i> 2021-04-26 09:23:15
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>
+            <ul>
+                
+                    <li>
+                        <a href="/categories/LeetCode/">LeetCode</a>
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>
+            <ul>
+                
+                    <li>
+                        <a href="/tags/C/">C++</a>
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i> <span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h1 id="数组理论基础"><a href="#数组理论基础" class="headerlink" title="数组理论基础"></a>数组理论基础</h1><p>数组在内存中的存储方式</p>
+<h5 id="数组是存放在连续内存空间上的相同类型数据的集合。"><a href="#数组是存放在连续内存空间上的相同类型数据的集合。" class="headerlink" title="数组是存放在连续内存空间上的相同类型数据的集合。"></a>数组是存放在连续内存空间上的相同类型数据的集合。</h5><p>数组可以方便的通过下标索引的方式取到下标对应的数据。</p>
+<p>如图所示：</p>
+<p><img src="https://img-blog.csdnimg.cn/2020121411152849.png" alt="算法通关数组"></p>
+<p>需注意两点：</p>
+<ul>
+<li><h5 id="数组下标都是从0开始的"><a href="#数组下标都是从0开始的" class="headerlink" title="数组下标都是从0开始的"></a>数组下标都是从0开始的</h5></li>
+<li><h5 id="数组内存空间的地址是连续的。"><a href="#数组内存空间的地址是连续的。" class="headerlink" title="数组内存空间的地址是连续的。"></a>数组内存空间的地址是连续的。</h5></li>
+</ul>
+<h6 id="正因为数组在内存空间的地址是连续的，所以我们在删除或者插入元素时，需要移动其他元素的地址。"><a href="#正因为数组在内存空间的地址是连续的，所以我们在删除或者插入元素时，需要移动其他元素的地址。" class="headerlink" title="正因为数组在内存空间的地址是连续的，所以我们在删除或者插入元素时，需要移动其他元素的地址。"></a>正因为数组在内存空间的地址是连续的，所以我们在删除或者插入元素时，需要移动其他元素的地址。</h6><p>例如删除下标为3的元素，需要对下标为3的元素后面的所有元素做移动操作，如图所示：</p>
+<p><img src="https://img-blog.csdnimg.cn/2020121411155232.png" alt="算法通关数组1"></p>
+<p>且当使用C++时，需要注意 vector 和 array 的区别，vector 的底层实现是 array，严格来讲 vector 是容器，不是数组。</p>
+<h5 id="数组元素时不能删除的，只能覆盖。"><a href="#数组元素时不能删除的，只能覆盖。" class="headerlink" title="数组元素时不能删除的，只能覆盖。"></a>数组元素时不能删除的，只能覆盖。</h5><p>二维数组请看图</p>
+<p><img src="https://img-blog.csdnimg.cn/20201214111612863.png" alt="算法通关数组2"></p>
+<h5 id="二维数组在内的空间地址是连续的吗？"><a href="#二维数组在内的空间地址是连续的吗？" class="headerlink" title="二维数组在内的空间地址是连续的吗？"></a>二维数组在内的空间地址是连续的吗？</h5><p>不同编程语言的内存管理是不一样的，以C++为例，在C++中 二维数组是连续分布的。</p>
+<p>以一个实验例子为证，C++测试代码如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test_arr</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> <span class="built_in">array</span>[<span class="number">2</span>][<span class="number">3</span>] = &#123;</span><br><span class="line">		&#123;<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>&#125;,</span><br><span class="line">		&#123;<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; &amp;<span class="built_in">array</span>[<span class="number">0</span>][<span class="number">0</span>] &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; &amp;<span class="built_in">array</span>[<span class="number">0</span>][<span class="number">1</span>] &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; &amp;<span class="built_in">array</span>[<span class="number">0</span>][<span class="number">2</span>] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; &amp;<span class="built_in">array</span>[<span class="number">1</span>][<span class="number">0</span>] &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; &amp;<span class="built_in">array</span>[<span class="number">1</span>][<span class="number">1</span>] &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; &amp;<span class="built_in">array</span>[<span class="number">1</span>][<span class="number">2</span>] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    test_arr();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>测试结果的地址为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">0x7ffee4065820 0x7ffee4065824 0x7ffee4065828</span><br><span class="line">0x7ffee406582c 0x7ffee4065830 0x7ffee4065834</span><br></pre></td></tr></table></figure>
+<p>注意地址为16进制，可以看出二维数组地址是连续的。</p>
+<p>因为是一个int数组，所以两个相邻的数组元素差4个字节，即0x7ffee4065820 与 0x7ffee4065824 差了一个4；其余的同理。</p>
+<p>如图：</p>
+<p><img src="https://img-blog.csdnimg.cn/20210310150641186.png" alt="数组内存"></p>
+<h5 id="可以看出C-中二维数组在地址空间上是连续的。"><a href="#可以看出C-中二维数组在地址空间上是连续的。" class="headerlink" title="可以看出C++中二维数组在地址空间上是连续的。"></a>可以看出C++中二维数组在地址空间上是连续的。</h5><p>比如Java就是没有指针的，同时也不对程序员暴露其元素地址，寻址操作完全交给虚拟机，所以看不到每个元素的地址情况。</p>
+<p>以Java一个例子为证</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test_arr</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span>[][] arr = &#123;&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;, &#123;<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;, &#123;<span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>&#125;, &#123;<span class="number">9</span>,<span class="number">9</span>,<span class="number">9</span>&#125;&#125;;</span><br><span class="line">    System.out.println(arr[<span class="number">0</span>]);</span><br><span class="line">    System.out.println(arr[<span class="number">1</span>]);</span><br><span class="line">    System.out.println(arr[<span class="number">2</span>]);</span><br><span class="line">    System.out.println(arr[<span class="number">3</span>]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出地址为：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[I@<span class="number">7852e922</span></span><br><span class="line">[I@<span class="number">4e25154</span>f</span><br><span class="line">[I@<span class="number">70</span>dea4e</span><br><span class="line">[I@<span class="number">5</span>c647e05</span><br></pre></td></tr></table></figure>
+<p>这里数值也为16进制，但不是真正的地址，而是经过处理后的数值了。可以看出二维数组的每一行头结点的地址是没有规律的，即不连续。</p>
+<p>所以Java的二维数组可能是如下了排列的方式：</p>
+<p><img src="https://img-blog.csdnimg.cn/20201214111631844.png" alt="算法通关数组3"></p>
+
+        </div>
+
+        
+
+        
+            <div class="article-nav">
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2021/04/01/JavaScript%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">JavaScript编程语言</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span> -
+            
+            2021 <i class="fas fa-heart icon-animate"></i> <a href="/">Wablers</a>
+        </div>
+        
+            <script async  src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        Visitor Count <span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        Totalview <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a> | Theme <a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.3.0</a>
+        </div>
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80"><span class="nav-text">数组理论基础</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E6%98%AF%E5%AD%98%E6%94%BE%E5%9C%A8%E8%BF%9E%E7%BB%AD%E5%86%85%E5%AD%98%E7%A9%BA%E9%97%B4%E4%B8%8A%E7%9A%84%E7%9B%B8%E5%90%8C%E7%B1%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E7%9A%84%E9%9B%86%E5%90%88%E3%80%82"><span class="nav-text">数组是存放在连续内存空间上的相同类型数据的集合。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E4%B8%8B%E6%A0%87%E9%83%BD%E6%98%AF%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%9A%84"><span class="nav-text">数组下标都是从0开始的</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E5%86%85%E5%AD%98%E7%A9%BA%E9%97%B4%E7%9A%84%E5%9C%B0%E5%9D%80%E6%98%AF%E8%BF%9E%E7%BB%AD%E7%9A%84%E3%80%82"><span class="nav-text">数组内存空间的地址是连续的。</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%AD%A3%E5%9B%A0%E4%B8%BA%E6%95%B0%E7%BB%84%E5%9C%A8%E5%86%85%E5%AD%98%E7%A9%BA%E9%97%B4%E7%9A%84%E5%9C%B0%E5%9D%80%E6%98%AF%E8%BF%9E%E7%BB%AD%E7%9A%84%EF%BC%8C%E6%89%80%E4%BB%A5%E6%88%91%E4%BB%AC%E5%9C%A8%E5%88%A0%E9%99%A4%E6%88%96%E8%80%85%E6%8F%92%E5%85%A5%E5%85%83%E7%B4%A0%E6%97%B6%EF%BC%8C%E9%9C%80%E8%A6%81%E7%A7%BB%E5%8A%A8%E5%85%B6%E4%BB%96%E5%85%83%E7%B4%A0%E7%9A%84%E5%9C%B0%E5%9D%80%E3%80%82"><span class="nav-text">正因为数组在内存空间的地址是连续的，所以我们在删除或者插入元素时，需要移动其他元素的地址。</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0%E6%97%B6%E4%B8%8D%E8%83%BD%E5%88%A0%E9%99%A4%E7%9A%84%EF%BC%8C%E5%8F%AA%E8%83%BD%E8%A6%86%E7%9B%96%E3%80%82"><span class="nav-text">数组元素时不能删除的，只能覆盖。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E5%9C%A8%E5%86%85%E7%9A%84%E7%A9%BA%E9%97%B4%E5%9C%B0%E5%9D%80%E6%98%AF%E8%BF%9E%E7%BB%AD%E7%9A%84%E5%90%97%EF%BC%9F"><span class="nav-text">二维数组在内的空间地址是连续的吗？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8F%AF%E4%BB%A5%E7%9C%8B%E5%87%BAC-%E4%B8%AD%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E5%9C%A8%E5%9C%B0%E5%9D%80%E7%A9%BA%E9%97%B4%E4%B8%8A%E6%98%AF%E8%BF%9E%E7%BB%AD%E7%9A%84%E3%80%82"><span class="nav-text">可以看出C++中二维数组在地址空间上是连续的。</span></a></li></ol></li></ol></li></ol></li></ol></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.3.0/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.3.0/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.3.0/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.3.0/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.3.0/source/js/dark-light-toggle.js"></script>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.3.0/source/js/code-copy.js"></script>
+
+
+
+
+<div class="post-scripts">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.3.0/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.3.0/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.3.0/source/js/toc.js"></script>
+    
+</div>
+
+
+
+</body>
+</html>
