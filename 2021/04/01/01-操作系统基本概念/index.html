@@ -1,0 +1,452 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>01-操作系统基本概念 | Wablers</title><meta name="keywords" content="计算机操作系统,概念详述"><meta name="author" content="Lin"><meta name="copyright" content="Lin"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="1.概念    * 计算机系统的层次结构        从低到高：裸机，操作系统，应用程序，用户        * 定义：        操作系统是指控制和管理整个计算机系统的硬件和软件资源，并合理的组织调度计算机的工作和资源的分配，        以提供用户和其他软件方便的接口和和环境，它是计算机系统中最基本的系统软件。            * 注意：打开任务管理器快捷键：ctrl + alt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="01-操作系统基本概念">
+<meta property="og:url" content="http://example.com/2021/04/01/01-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/index.html">
+<meta property="og:site_name" content="Wablers">
+<meta property="og:description" content="1.概念    * 计算机系统的层次结构        从低到高：裸机，操作系统，应用程序，用户        * 定义：        操作系统是指控制和管理整个计算机系统的硬件和软件资源，并合理的组织调度计算机的工作和资源的分配，        以提供用户和其他软件方便的接口和和环境，它是计算机系统中最基本的系统软件。            * 注意：打开任务管理器快捷键：ctrl + alt">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/Wablers/images/blob/master/images/%EB%B6%88%EA%B3%B0%5B62%5D%20on%20Twitter.png">
+<meta property="article:published_time" content="2021-04-01T12:54:52.000Z">
+<meta property="article:modified_time" content="2021-04-01T13:06:43.324Z">
+<meta property="article:author" content="Lin">
+<meta property="article:tag" content="计算机操作系统">
+<meta property="article:tag" content="概念详述">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/Wablers/images/blob/master/images/%EB%B6%88%EA%B3%B0%5B62%5D%20on%20Twitter.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2021/04/01/01-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '01-操作系统基本概念',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2021-04-01 21:06:43'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/source/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">20</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div></div></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://gitee.com/Wablers/images/blob/master/images/%EB%B6%88%EA%B3%B0%5B62%5D%20on%20Twitter.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Wablers</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">01-操作系统基本概念</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-04-01T12:54:52.000Z" title="发表于 2021-04-01 20:54:52">2021-04-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-04-01T13:06:43.324Z" title="更新于 2021-04-01 21:06:43">2021-04-01</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">计算机操作系统</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="01-操作系统基本概念"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>1.概念<br>    * 计算机系统的层次结构<br>        从低到高：裸机，操作系统，应用程序，用户<br>        * 定义：<br>        操作系统是指控制和管理整个计算机系统的硬件和软件资源，并合理的组织调度计算机的工作和资源的分配，<br>        以提供用户和其他软件方便的接口和和环境，它是计算机系统中最基本的系统软件。<br>            * 注意：打开任务管理器快捷键：ctrl + alt + del + 选择 / ctrl + shift +esc</p>
+<ol start="2">
+<li><p>功能和目标</p>
+<ul>
+<li><p>作为系统资源的管理者：</p>
+<ul>
+<li>功能：<ol>
+<li>处理机管理：如QQ程序的正常运行，对应的进程需要被处理机(CPU)处理</li>
+<li>存储器管理：如运行QQ程序时，需要将该程序相关的数据加载进内存</li>
+<li>文件管理：如在文件夹中找到相应的可执行性程序的位置</li>
+<li>设备管理：如QQ视频聊天时，需要将摄像头分配给进程</li>
+</ol>
+</li>
+<li>目标：安全和高效</li>
+</ul>
+</li>
+<li><p>作为用户和计算机硬件之间的接口：</p>
+<ul>
+<li><p>功能：</p>
+<ol>
+<li>命令接口：允许用户直接使用<ul>
+<li>联机命令接口：用户说一句，系统做一句</li>
+<li>脱机命令接口：用户说一堆，系统做一堆</li>
+</ul>
+</li>
+<li>程序接口：允许用户通过程序间接使用，由一种系统调用组成，可以理解为系统调用等于程序接口</li>
+<li>GUI: 现代操作系统中最流行的图形用户接口</li>
+</ol>
+</li>
+<li><p>目标：方便用户直接使用</p>
+</li>
+</ul>
+</li>
+<li><p>作为最接近硬件的层次</p>
+<ul>
+<li>功能：实现对硬件机器的扩展。<br>  例如：通过对裸机安装操作系统，可以将裸机改造成更加方便，功能更加强大的机器。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>操作系统的四个基本特征</p>
+<ol>
+<li><p>并发：</p>
+<ul>
+<li><p>概念：指两个或多个事件在同一时间间隔内发生。这些事件在宏观上是同时发生的，但是在微观上是交替</p>
+<pre><code>  发生的。
+
+  并行：两个或多个事件在同一时刻同时发生。
+
+  理解：并行是指在同一时刻，同时做多件事情，而并发就是指在宏观上是同时进行，微观上是交替进行
+        也就是说并发是在很短的时间内交替做事。</code></pre>
+</li>
+<li><p>操作系统的并发性是指计算机系统中同时存在着多个运行的程序。</p>
+</li>
+<li><p>对于并发的举例：<br>  单核的计算机同时只能运行一个程序，而操作系统会协调多个程序交替执行。也就是说，微观上是交替进行<br>  的，但人们在宏观上看来是程序在同时进行。</p>
+</li>
+</ul>
+</li>
+<li><p>共享</p>
+<ul>
+<li><p>概念：<br>  共享即资源共享，是指在系统中的资源可以共内存中对个并发执行的进程来共同使用</p>
+</li>
+<li><p>分类：</p>
+<ul>
+<li><p>互斥共享方式：虽然系统中的资源可以给多个进程使用，但是，在一个时间内只能给一个进程访问该资源<br>  举例:在使用QQ和微信视频聊天时，同一时间内，摄像头只能分配给其中一个使用</p>
+</li>
+<li><p>同时共享方式：访问资源时，允许一个时间段内多个进程“同时”对资源进行访问<br>  举例：在使用QQ发送文件A时，又使用微信发送文件B，在宏观上看，两个资源在同时发送，微观上看</p>
+<pre><code>    两个进程是交替访问硬盘资源发送数据的</code></pre>
+</li>
+</ul>
+</li>
+<li><p>并发和共享的关系</p>
+<ul>
+<li>举例：<br>  QQ在发送文件A，微信在发送文件B<pre><code>  1. 两个进程在并发的执行（并发性）
+  2. 发送资源需要共享的访问硬盘资源（共享性）</code></pre>
+</li>
+<li>结论：<br>  并发性和共享性是互为存在条件的。如果失去了并发性，那么就是一个程序在执行，共享性就没有存在的意义<br>  如果失去了共享性，两个进程就不能同时访问硬盘资源，也就不能同时发送文件，也就无法并发。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>虚拟</p>
+<ul>
+<li><p>概念：<br>  是指把一个物理上的实体变为若干个逻辑上的对应物。物理实体是实际存在的，而逻辑上的对应物是用户感受到的<br>  举例：</p>
+<pre><code>  单核的CPU同时能执行多个应用程序，为什么呢？为什么只有4G的内存却可以运行超过4G的进程？
+  这是因为前者采用了虚拟处理器技术，实际上只有一个CPU，但是看起有多个程序在执行。后者采用虚拟存储技术。</code></pre>
+</li>
+<li><p>虚拟技术的分类</p>
+<ul>
+<li>空分复用技术（如虚拟存储技术）</li>
+<li>时分复用技术（如虚拟处理技术）<br>  对于虚拟处理技术而言，如果失去了并发性，那么在一段时间内只需要运行一个程序，实现虚拟性也就没有意义。<br>  也就是说，没有并发性就谈不上个虚拟性</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>异步</p>
+<ul>
+<li><p>概念：在多道程序运行环境下，允许多个程序并发执行，但由于资源有限，进程的执行不是一贯到底的，而是走走停停，</p>
+<pre><code>  以不可预知的速度向前推进，这就是程序的异步性。
+
+  举例：
+      当一个进程A需要使用某个指定的资源时，另外一个进程也B需要使用，那么B就需要等到A使用完之后，才能
+      够给B使用。(也就是指走走停停)</code></pre>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>操作系统的发展与分类</p>
+<ol>
+<li><p>手工操作阶段</p>
+<ul>
+<li>主要缺点：用户独占全机，人机速度矛盾导致资源利用率极低</li>
+</ul>
+</li>
+<li><p>批处理阶段：单道批处理阶段</p>
+<ul>
+<li>引入脱机输入/输出技术(用磁带完成)，并监督程序负责控制作业的输入输出</li>
+<li>主要优点：缓解一定程度的人机速度矛盾，资源利用率有所提升。</li>
+<li>主要缺点：内存中仅能有一道程序运行，只有该程序运行结束之后才能调入下一道程序。CPU有大量的时间是在空闲等待<pre><code>      i/o完成资源利用率依然很低</code></pre>
+</li>
+</ul>
+</li>
+<li><p>批处理阶段：多道批处理系统</p>
+<ul>
+<li>主要优点：多道程序并发执行，能够共享计算机资源。资源利用率大幅度提升，CPU和其他资源保持忙碌状态，系统吞吐<pre><code>      量增大</code></pre>
+</li>
+<li>主要缺点：用户响应时间过长，没有人机交互的功能（用户提交自己的作业之后就只能等待计算机处理完成，中间不能<pre><code>      控制自己的作业执行）</code></pre>
+</li>
+</ul>
+</li>
+<li><p>分时操作系统</p>
+<ul>
+<li>概念：计算机以时间片为单位轮流为各个用户/作业服务，各个用户可以通过终端与计算机进行交互</li>
+<li>主要优点：用户请求可以被即时响应，解决了人机交互问题。允许多个用户同时使用一台计算机，并且用户对计算机的<pre><code>      操作相互独立，感受不到对方的存在</code></pre>
+</li>
+<li>主要缺点：不能优先处理一些紧急任务，操作系统对各个用户/作业都是完全公平的，循环地为每个用户/作业服务一个时<pre><code>      间片，不区分任务的紧急性</code></pre>
+</li>
+</ul>
+</li>
+<li><p>实时操作系统（需要在严格的时限内处理完时间）</p>
+<ul>
+<li>主要优点：能够优先响应一些紧急任务，某些紧急任务不需要时间片排对</li>
+<li>主要特点：及时性和可靠性</li>
+<li>分类<ol>
+<li>硬实施系统：不许在绝对严格的规定时间内完成处理。如：导弹控制系统，自动驾驶系统</li>
+<li>软实时系统：能接受偶尔违反时间规定，如：12306的火车订票系统</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>其他几种操作系统</p>
+<ol>
+<li><p>网络操作系统：是伴随者计算机网络的发展而诞生的，把网络中各个计算机有机的结合起来，实现数据传输等功能，实现</p>
+<pre><code>         网络中各种资源的共享（如文件共享）和各台计算机之间的通信。（如：Windows NT就是一种典型的网络
+         操作系统，网站服务器就可以使用）</code></pre>
+</li>
+<li><p>分布式操作系统：</p>
+<ul>
+<li>主要特点：分布性，并行性<br>各台计算机的地位相同，任何工作都可以分布在这些计算机上，由他们并行，协同完成这个任务</li>
+</ul>
+</li>
+<li><p>个人计算机操作系统<br> 如：Windows XP MacOS 等</p>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>操作系统的运行机制和体系结构</p>
+<ol>
+<li><p>运行机制</p>
+<ul>
+<li><p>指令：就是指处理器(CPU)能识别，执行的最基本命令</p>
+<ul>
+<li><p>指令的分类（两种）：</p>
+<ol>
+<li>特权指令：不允许用户程序使用的指令（如内存清零指令）</li>
+<li>非特权指令：用户程序能使用的指令（如普通的运算指令）</li>
+</ol>
+</li>
+<li><p>问题：CPU如何判断当前是否可以执行特权指令？通过处理器状态实现</p>
+<pre><code>  * 两种处理器状态：
+      1. 用户态（目态）：此时CPU只能执行非特权指令
+      2. 核心态（管态）：特权指令和非特权指令都能执行
+      注意：处理器状态是用程序状态字寄存器（PSW）中的某标志位来标识当前处理器处于什么状态。如0为用户
+           态，1为核心态</code></pre>
+</li>
+<li><p>两种程序：</p>
+<ol>
+<li>内核程序：操作系统的内核程序时系统的管理者，既可以执行特权指令，也可以执行非特权指令，运行在核心态</li>
+<li>应用程序：为了保证系统的安全运行，应用程序只能使用非特权指令，运行在用户态</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>操作系统的内核</p>
+<ul>
+<li><p>概念：内核是计算机上配置的底层软件，试操作系统中最基本，最核心的部分</p>
+<pre><code>  如：进程管理，存储器管理，设备管理等功能，以及时钟管理，中断处理，原语（设备驱动，CPU切换等）</code></pre>
+</li>
+<li><p>分类 </p>
+<ul>
+<li><p>原语：是一种特殊的应用程序，处于系统最底层，最接近硬件的部分，这种程序在运行中具有原子性（运</p>
+<pre><code>  行只能一气呵成，不能被中断）特点是运行时间较短，调用频繁</code></pre>
+</li>
+<li><p>时钟管理：实现计时功能</p>
+</li>
+<li><p>中断处理：负责实现中断机制</p>
+</li>
+<li><p>对系统资源进行管理的功能：进程管理，存储器管理，设备管理</p>
+</li>
+</ul>
+</li>
+<li><p>内核程序：实现操作系统内核功能的程序</p>
+</li>
+</ul>
+</li>
+<li><p>操作系统的体系结构</p>
+<ul>
+<li><p>大内核：将操作系统的主要功能模块都作为系统内核，运行在核心态</p>
+<ul>
+<li>优点：高性能</li>
+<li>缺点：内核代码庞大，结构混乱，难以维护</li>
+</ul>
+</li>
+<li><p>微内核：只把最基本的功能保留在内核</p>
+<ul>
+<li>优点：内核功能少，结构清晰，方便维护</li>
+<li>缺点：需啊哟频繁地在核心态和用户态之间切换，性能低</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>中断和异常</p>
+<ol>
+<li><p>中断机制的诞生</p>
+<ul>
+<li>诞生：为了解决计算机运行效率低的问题，人们发明了操作系统（作为计算机的管理者），引入中断机制，实现多道程序并发执行</li>
+<li>本质：发生中断之后就意味着需要操作系统介入，开展管理工作</li>
+</ul>
+</li>
+<li><p>中断的概念何作用</p>
+<ol>
+<li><p>当中断发生时，CPU立即进入核心态</p>
+</li>
+<li><p>当中断发生后，当前运行的进程暂停运行，并由操作系统内核对中断进行处理。</p>
+</li>
+<li><p>对于不同的中断信号，会进行不同的处理</p>
+<p>发生了中断，那么，计算机操作系统就需要介入，开展管理工作，由于操作系统的管理工作需要使用特权指令，因此CPU需要从用户<br>态转换为核心态，使操作系统获得计算机的控制权。有了中断，才能实现多道程序的并发执行</p>
+</li>
+</ol>
+<ul>
+<li>问题：如何实现用户态和核心态之间的切换？<pre><code>  用户态转换为核心态是通过中断实现的，并且中断是实现两者切换的唯一途径
+  核心态转换为用户态是通过执行一个特权指令，将程序状态字（PSW）的标志位设置为“用户态”</code></pre>
+</li>
+</ul>
+</li>
+<li><p>中断的分类</p>
+<ul>
+<li><p>内中断（也称异常，例外，陷入）：信号来源于CPU内部与当前的指令有关</p>
+<ul>
+<li>第一种分类方式<ol>
+<li>自愿中断（指令中断）：如：系统调用时使用的访管指令（又叫陷入指令，trap指令）</li>
+<li>强迫中断<ul>
+<li>硬件故障：如缺页</li>
+<li>软件中断：如整数除以0</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>第二种分类方式<ol>
+<li>陷阱，陷入（trap）：有意而为之的异常。如系统调用</li>
+<li>故障（fault）：由错误条件引起的，可能被故障处理工具修复。如缺页</li>
+<li>终止（abort）不可恢复的致命错误造成的结果，终止处理程序不在将控制返回给引发终止的应用程序、如整数除0</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>外中断（中断）：信号来源于CPU外部，与当前执行的指令无关（狭义上的中断）</p>
+<ol>
+<li>外设请求</li>
+<li>人工干预</li>
+</ol>
+</li>
+<li><p>外中断的处理过程</p>
+<ol>
+<li>执行完每个指令，CPU会检查是否有外部中断信号</li>
+<li>如果有，就需要保护中断的CPU环境（如程序状态字PSW，程序计数器PC，各种通用寄存器）</li>
+<li>根据中断信号转入相应的中断处理程序</li>
+<li>恢复进程的CPU环境并退出中断，返回原进程继续往下执行指令</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Lin</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2021/04/01/01-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/">http://example.com/2021/04/01/01-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">Wablers</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">计算机操作系统</a><a class="post-meta__tags" href="/tags/%E6%A6%82%E5%BF%B5%E8%AF%A6%E8%BF%B0/">概念详述</a></div><div class="post_share"><div class="social-share" data-image="https://gitee.com/Wablers/images/blob/master/images/%EB%B6%88%EA%B3%B0%5B62%5D%20on%20Twitter.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/04/01/02-%E7%BA%BF%E7%A8%8B%E4%B8%8E%E8%BF%9B%E7%A8%8B/"><img class="prev-cover" src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">02-线程与进程</div></div></a></div><div class="next-post pull-right"><a href="/2021/03/06/PRG7-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B7%A6%E5%8F%B3%E5%8C%B9%E9%85%8D/"><img class="next-cover" src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg3.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">PRG7.字符串左右匹配</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2021/04/01/02-线程与进程/" title="02-线程与进程"><img class="cover" src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-04-01</div><div class="title">02-线程与进程</div></div></a></div><div><a href="/2021/04/01/03-处理机调度/" title="03-处理机调度"><img class="cover" src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-04-01</div><div class="title">03-处理机调度</div></div></a></div><div><a href="/2021/04/01/04-管程/" title="04-管程"><img class="cover" src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg2.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-04-01</div><div class="title">04-管程</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/source/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Lin</div><div class="author-info__description">Love and Share ！</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">20</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/LinFallen" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:wablers@163.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/06/03/%E5%BD%BB%E5%BA%95%E6%90%9E%E6%87%82C%E6%8C%87%E9%92%88%EF%BC%88%E4%B8%8A%EF%BC%89/" title="彻底搞懂C/C++指针"><img src="https://gitee.com/Wablers/images/blob/master/images/Saturn.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="彻底搞懂C/C++指针"/></a><div class="content"><a class="title" href="/2021/06/03/%E5%BD%BB%E5%BA%95%E6%90%9E%E6%87%82C%E6%8C%87%E9%92%88%EF%BC%88%E4%B8%8A%EF%BC%89/" title="彻底搞懂C/C++指针">彻底搞懂C/C++指针</a><time datetime="2021-06-03T13:33:40.000Z" title="发表于 2021-06-03 21:33:40">2021-06-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/05/10/Self-learing-Tasks/" title="Self_learing Tasks"><img src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Self_learing Tasks"/></a><div class="content"><a class="title" href="/2021/05/10/Self-learing-Tasks/" title="Self_learing Tasks">Self_learing Tasks</a><time datetime="2021-05-10T06:58:58.000Z" title="发表于 2021-05-10 14:58:58">2021-05-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/05/08/%E9%95%BF%E5%BA%A6%E6%9C%80%E5%B0%8F%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/" title="长度最小的子数组"><img src="https://gitee.com/Wablers/images/blob/master/images/Saturn.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="长度最小的子数组"/></a><div class="content"><a class="title" href="/2021/05/08/%E9%95%BF%E5%BA%A6%E6%9C%80%E5%B0%8F%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/" title="长度最小的子数组">长度最小的子数组</a><time datetime="2021-05-08T15:25:15.000Z" title="发表于 2021-05-08 23:25:15">2021-05-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/05/06/%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/" title="移除元素"><img src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="移除元素"/></a><div class="content"><a class="title" href="/2021/05/06/%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/" title="移除元素">移除元素</a><time datetime="2021-05-06T10:05:37.000Z" title="发表于 2021-05-06 18:05:37">2021-05-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/04/27/%E4%BA%8C%E5%88%86%E6%B3%95%E6%9F%A5%E6%89%BE/" title="二分查找"><img src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="二分查找"/></a><div class="content"><a class="title" href="/2021/04/27/%E4%BA%8C%E5%88%86%E6%B3%95%E6%9F%A5%E6%89%BE/" title="二分查找">二分查找</a><time datetime="2021-04-27T14:08:26.000Z" title="发表于 2021-04-27 22:08:26">2021-04-27</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By Lin</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
