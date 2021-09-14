@@ -1,0 +1,188 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>04-管程 | Hexo</title><meta name="keywords" content="计算机操作系统,概念详述"><meta name="author" content="John Doe"><meta name="copyright" content="John Doe"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="为什么引入管程  信号量机制存在的问题：编写程序困难，易出错由于这个原因，人们想设计一种机制，让程序员编写程序时不在需要关注复杂的PV操作   定义和基本操作  管程是一种特殊的软件模块，由下列部分组成  局部于管程的共享数据结构说明 对该数据结构进行操作的一组过程（函数） 对局部于管程的共享数据结构设置初始值的语句 管程有一个名字   基本特征  局部于管程的数据只能被局部于管程的过程所访问">
+<meta property="og:type" content="article">
+<meta property="og:title" content="04-管程">
+<meta property="og:url" content="http://example.com/2021/04/01/04-%E7%AE%A1%E7%A8%8B/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="为什么引入管程  信号量机制存在的问题：编写程序困难，易出错由于这个原因，人们想设计一种机制，让程序员编写程序时不在需要关注复杂的PV操作   定义和基本操作  管程是一种特殊的软件模块，由下列部分组成  局部于管程的共享数据结构说明 对该数据结构进行操作的一组过程（函数） 对局部于管程的共享数据结构设置初始值的语句 管程有一个名字   基本特征  局部于管程的数据只能被局部于管程的过程所访问">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg">
+<meta property="article:published_time" content="2021-04-01T12:58:48.000Z">
+<meta property="article:modified_time" content="2021-04-01T13:07:05.007Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="计算机操作系统">
+<meta property="article:tag" content="概念详述">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2021/04/01/04-%E7%AE%A1%E7%A8%8B/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '04-管程',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2021-04-01 21:07:05'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">20</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">12</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">5</div></a></div></div></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Hexo</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">04-管程</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2021-04-01T12:58:48.000Z" title="Created 2021-04-01 20:58:48">2021-04-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2021-04-01T13:07:05.007Z" title="Updated 2021-04-01 21:07:05">2021-04-01</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">计算机操作系统</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="04-管程"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><ol>
+<li><p>为什么引入管程</p>
+<ul>
+<li>信号量机制存在的问题：编写程序困难，易出错<br>由于这个原因，人们想设计一种机制，让程序员编写程序时不在需要关注复杂的PV操作</li>
+</ul>
+</li>
+<li><p>定义和基本操作</p>
+<ul>
+<li><p>管程是一种特殊的软件模块，由下列部分组成</p>
+<ol>
+<li>局部于管程的共享数据结构说明</li>
+<li>对该数据结构进行操作的一组过程（函数）</li>
+<li>对局部于管程的共享数据结构设置初始值的语句</li>
+<li>管程有一个名字</li>
+</ol>
+</li>
+<li><p>基本特征</p>
+<ol>
+<li>局部于管程的数据只能被局部于管程的过程所访问</li>
+<li>一个过程只有通过调用管程内的过程（函数）才能进入管程访问共享数据<br> （也就是说管程只能通过管程内部的函数来进行访问）</li>
+<li>每次仅允许一个进程在管程内执行某个内部过程</li>
+</ol>
+</li>
+<li><p>管程中会设置条件标量和等待唤醒操作，以解决同步问题，同时管程也能很好的处理互斥的问题</p>
+</li>
+<li><p>引入管程的目的：更加方便的实现进程的互斥和同步</p>
+<ol>
+<li>需要在管程中定义共享数据</li>
+<li>需要定义访问数据的“入口”——其实就是函数</li>
+<li>只有通过“入口”才能访问共享数据</li>
+<li>管程中有很多入口，但是每次只能开放其中一个，并且只能让一个线程或线程进入（这种互斥是由编译<br> 器实现的，不需要程序员关心）</li>
+<li>可在管程中设置条件变量以及等待/唤醒操作已解决同步问题。可以让进程等待或线程（此时进程需要释放<br> 管程的话使用权，“入口”），也可以通过唤醒将进程唤醒</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">John Doe</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://example.com/2021/04/01/04-%E7%AE%A1%E7%A8%8B/">http://example.com/2021/04/01/04-%E7%AE%A1%E7%A8%8B/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">计算机操作系统</a><a class="post-meta__tags" href="/tags/%E6%A6%82%E5%BF%B5%E8%AF%A6%E8%BF%B0/">概念详述</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/04/01/JavaScript%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"><img class="prev-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">JavaScript编程语言</div></div></a></div><div class="next-post pull-right"><a href="/2021/04/01/03-%E5%A4%84%E7%90%86%E6%9C%BA%E8%B0%83%E5%BA%A6/"><img class="next-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">03-处理机调度</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2021/04/01/01-操作系统基本概念/" title="01-操作系统基本概念"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-04-01</div><div class="title">01-操作系统基本概念</div></div></a></div><div><a href="/2021/04/01/02-线程与进程/" title="02-线程与进程"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-04-01</div><div class="title">02-线程与进程</div></div></a></div><div><a href="/2021/04/01/03-处理机调度/" title="03-处理机调度"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-04-01</div><div class="title">03-处理机调度</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">John Doe</div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">20</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">12</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">5</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/06/03/%E5%BD%BB%E5%BA%95%E6%90%9E%E6%87%82C%E6%8C%87%E9%92%88%EF%BC%88%E4%B8%8A%EF%BC%89/" title="彻底搞懂C/C++指针"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="彻底搞懂C/C++指针"/></a><div class="content"><a class="title" href="/2021/06/03/%E5%BD%BB%E5%BA%95%E6%90%9E%E6%87%82C%E6%8C%87%E9%92%88%EF%BC%88%E4%B8%8A%EF%BC%89/" title="彻底搞懂C/C++指针">彻底搞懂C/C++指针</a><time datetime="2021-06-03T13:33:40.000Z" title="Created 2021-06-03 21:33:40">2021-06-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/05/10/Self-learing-Tasks/" title="Self_learing Tasks"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Self_learing Tasks"/></a><div class="content"><a class="title" href="/2021/05/10/Self-learing-Tasks/" title="Self_learing Tasks">Self_learing Tasks</a><time datetime="2021-05-10T06:58:58.000Z" title="Created 2021-05-10 14:58:58">2021-05-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/05/08/%E9%95%BF%E5%BA%A6%E6%9C%80%E5%B0%8F%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/" title="长度最小的子数组"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="长度最小的子数组"/></a><div class="content"><a class="title" href="/2021/05/08/%E9%95%BF%E5%BA%A6%E6%9C%80%E5%B0%8F%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/" title="长度最小的子数组">长度最小的子数组</a><time datetime="2021-05-08T15:25:15.000Z" title="Created 2021-05-08 23:25:15">2021-05-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/05/06/%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/" title="移除元素"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="移除元素"/></a><div class="content"><a class="title" href="/2021/05/06/%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/" title="移除元素">移除元素</a><time datetime="2021-05-06T10:05:37.000Z" title="Created 2021-05-06 18:05:37">2021-05-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/04/27/%E4%BA%8C%E5%88%86%E6%B3%95%E6%9F%A5%E6%89%BE/" title="二分查找"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="二分查找"/></a><div class="content"><a class="title" href="/2021/04/27/%E4%BA%8C%E5%88%86%E6%B3%95%E6%9F%A5%E6%89%BE/" title="二分查找">二分查找</a><time datetime="2021-04-27T14:08:26.000Z" title="Created 2021-04-27 22:08:26">2021-04-27</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By John Doe</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
