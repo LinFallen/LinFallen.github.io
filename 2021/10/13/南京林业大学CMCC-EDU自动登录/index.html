@@ -1,0 +1,214 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>南京林业大学CMCC-EDU自动登录 | Wablers</title><meta name="keywords" content="校园网登录,自动化脚本"><meta name="author" content="Lin"><meta name="copyright" content="Lin"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="南京林业大学CMCC-EDU自动登录电脑端（Windows）1. 配置Python环境 打开Python官网  选择下方Download区中的Python 3.10.0，会自动跳到下个界面 （版本可能随着时间有变化）   页面最下方Windows installer (64-bit)，会自动下载   打开或运行下载好的程序  记得勾选下方Add Python 3.10 to PATH   点击In">
+<meta property="og:type" content="article">
+<meta property="og:title" content="南京林业大学CMCC-EDU自动登录">
+<meta property="og:url" content="http://example.com/2021/10/13/%E5%8D%97%E4%BA%AC%E6%9E%97%E4%B8%9A%E5%A4%A7%E5%AD%A6CMCC-EDU%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95/index.html">
+<meta property="og:site_name" content="Wablers">
+<meta property="og:description" content="南京林业大学CMCC-EDU自动登录电脑端（Windows）1. 配置Python环境 打开Python官网  选择下方Download区中的Python 3.10.0，会自动跳到下个界面 （版本可能随着时间有变化）   页面最下方Windows installer (64-bit)，会自动下载   打开或运行下载好的程序  记得勾选下方Add Python 3.10 to PATH   点击In">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/Wablers/images/raw/master/images/mountain.jpg">
+<meta property="article:published_time" content="2021-10-13T01:40:16.000Z">
+<meta property="article:modified_time" content="2021-10-13T02:19:10.208Z">
+<meta property="article:author" content="Lin">
+<meta property="article:tag" content="校园网登录">
+<meta property="article:tag" content="自动化脚本">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/Wablers/images/raw/master/images/mountain.jpg"><link rel="shortcut icon" href="/img/favicon.jpg"><link rel="canonical" href="http://example.com/2021/10/13/%E5%8D%97%E4%BA%AC%E6%9E%97%E4%B8%9A%E5%A4%A7%E5%AD%A6CMCC-EDU%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?292a248418141690f958c1ffeccc9c3e";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-56QZV30ZCS"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-56QZV30ZCS');
+</script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: Lin","link":"链接: ","source":"来源: Wablers","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '南京林业大学CMCC-EDU自动登录',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-10-13 10:19:10'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">23</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">17</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://gitee.com/Wablers/images/raw/master/images/mountain.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Wablers</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">南京林业大学CMCC-EDU自动登录</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-10-13T01:40:16.000Z" title="发表于 2021-10-13 09:40:16">2021-10-13</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-10-13T02:19:10.208Z" title="更新于 2021-10-13 10:19:10">2021-10-13</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Python/">Python</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="南京林业大学CMCC-EDU自动登录"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="南京林业大学CMCC-EDU自动登录"><a href="#南京林业大学CMCC-EDU自动登录" class="headerlink" title="南京林业大学CMCC-EDU自动登录"></a>南京林业大学CMCC-EDU自动登录</h1><h2 id="电脑端（Windows）"><a href="#电脑端（Windows）" class="headerlink" title="电脑端（Windows）"></a>电脑端（Windows）</h2><h3 id="1-配置Python环境"><a href="#1-配置Python环境" class="headerlink" title="1. 配置Python环境"></a>1. 配置Python环境</h3><ol>
+<li><p>打开<a target="_blank" rel="noopener" href="https://www.python.org/">Python官网</a></p>
+</li>
+<li><p>选择下方<strong>Download</strong>区中的Python 3.10.0，会自动跳到下个界面</p>
+<p>（版本可能随着时间有变化）</p>
+<p><img src="https://gitee.com/Wablers/images/raw/master/images/20211013101101.png"></p>
+</li>
+<li><p>页面最下方<a target="_blank" rel="noopener" href="https://www.python.org/ftp/python/3.10.0/python-3.10.0-amd64.exe">Windows installer (64-bit)</a>，会自动下载</p>
+<p><img src="https://gitee.com/Wablers/images/raw/master/images/20211013101206.png"></p>
+</li>
+<li><p>打开或运行下载好的程序</p>
+</li>
+<li><p>记得勾选下方<strong>Add Python 3.10 to PATH</strong></p>
+<p><img src="https://gitee.com/Wablers/images/raw/master/images/20211013101301.png"></p>
+</li>
+<li><p>点击<strong>Install Now</strong>（非小白建议自行选择路径）</p>
+<p><img src="https://gitee.com/Wablers/images/raw/master/images/20211013101333.png"></p>
+</li>
+<li><p>等待它的自动安装</p>
+</li>
+<li><p>到此，Python环境配置完成</p>
+</li>
+</ol>
+<h3 id="2-安装requests第三方库"><a href="#2-安装requests第三方库" class="headerlink" title="2. 安装requests第三方库"></a>2. 安装requests第三方库</h3><ol>
+<li><p>按下键盘 win + R 并输入 cmd</p>
+<p><img src="https://gitee.com/Wablers/images/raw/master/images/20211013101406.png"></p>
+</li>
+<li><p>在命令框中输入代码并回车</p>
+<p><img src="https://gitee.com/Wablers/images/raw/master/images/20211013101451.png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip  install  requests</span><br></pre></td></tr></table></figure>
+<h3 id="3-制作并运行脚本"><a href="#3-制作并运行脚本" class="headerlink" title="3. 制作并运行脚本"></a>3. 制作并运行脚本</h3></li>
+<li><p>桌面新建记事本，粘贴以下代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url = <span class="string">&quot;http://10.11.1.3/a70.htm&quot;</span></span><br><span class="line"></span><br><span class="line">data = &#123;</span><br><span class="line">    <span class="string">&quot;DDDDD&quot;</span>: <span class="string">&quot;你的账号&quot;</span>,</span><br><span class="line">    <span class="string">&quot;upass&quot;</span>: <span class="string">&quot;你的密码&quot;</span>,</span><br><span class="line">    <span class="string">&quot;R1&quot;</span>: <span class="string">&quot;0&quot;</span>,</span><br><span class="line">    <span class="string">&quot;R2&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">    <span class="string">&quot;R3&quot;</span>: <span class="string">&quot;0&quot;</span>,</span><br><span class="line">    <span class="string">&quot;R6&quot;</span>: <span class="string">&quot;0&quot;</span>,</span><br><span class="line">    <span class="string">&quot;para&quot;</span>: <span class="string">&quot;00&quot;</span>,</span><br><span class="line">    <span class="string">&quot;0MKKey&quot;</span>: <span class="string">&quot;123456&quot;</span>,</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line">header = &#123;</span><br><span class="line">    <span class="string">&quot;Accept&quot;</span>: <span class="string">&quot;text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9&quot;</span>,</span><br><span class="line">    <span class="string">&quot;Accept-Encoding&quot;</span>: <span class="string">&quot;gzip, deflate&quot;</span>,</span><br><span class="line">    <span class="string">&quot;Accept-Language&quot;</span>: <span class="string">&quot;zh-CN,zh;q=0.9,en;q=0.8&quot;</span>,</span><br><span class="line">    <span class="string">&quot;Cache-Control&quot;</span>: <span class="string">&quot;max-age=0&quot;</span>,</span><br><span class="line">    <span class="string">&quot;Connection&quot;</span>: <span class="string">&quot;keep-alive&quot;</span>,</span><br><span class="line">    <span class="string">&quot;Content-Length&quot;</span>: <span class="string">&quot;160&quot;</span>,</span><br><span class="line">    <span class="string">&quot;Content-Type&quot;</span>: <span class="string">&quot;application/x-www-form-urlencoded&quot;</span>,</span><br><span class="line">    <span class="string">&quot;Host&quot;</span>: <span class="string">&quot;10.11.1.3&quot;</span>,</span><br><span class="line">    <span class="string">&quot;Origin&quot;</span>: <span class="string">&quot;http://10.11.1.3&quot;</span>,</span><br><span class="line">    <span class="string">&quot;Referer&quot;</span>: <span class="string">&quot;http://10.11.1.3/a70.htm&quot;</span>,</span><br><span class="line">    <span class="string">&quot;Upgrade-Insecure-Requests&quot;</span>: <span class="string">&quot;1&quot;</span>,</span><br><span class="line">    <span class="string">&quot;User-Agent&quot;</span>: <span class="string">&quot;你的客户端参数&quot;</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">response = requests.post(url, data, headers=header).status_code</span><br><span class="line"></span><br><span class="line">print(<span class="string">&quot;回应代码&#123;&#125;&quot;</span>.<span class="built_in">format</span>(response))</span><br></pre></td></tr></table></figure></li>
+<li><p>打开浏览器，进入到校园网登录界面<a target="_blank" rel="noopener" href="http://10.11.1.3/a70.htm%E5%B9%B6%E6%8C%89%E4%B8%8B">http://10.11.1.3/a70.htm并按下</a> F12</p>
+</li>
+<li><p>切换到NetWork（网络）选项，并勾选上方Preserve log（保留日志），可能需要 Ctrl+F5 或者 F5 刷新一下页面</p>
+<p><img src="https://gitee.com/Wablers/images/raw/master/images/20211013101709.png"></p>
+</li>
+<li><p>此时登录账号，在右边抓包列中中找到a70.htm，并向下找到下图三处对应的值，右键copy到代码中替换</p>
+<p><img src="https://gitee.com/Wablers/images/raw/master/images/20211013101844.png"></p>
+</li>
+<li><p>修改完并保存，重命名记事本扩展名 .txt 为 .py，右键选择使用Python运行这个文件</p>
+</li>
+<li><p>此时一键登录脚本已制作完成，可以注销校园网登录，测试一下</p>
+</li>
+</ol>
+<h3 id="4-进阶自动化"><a href="#4-进阶自动化" class="headerlink" title="4. 进阶自动化"></a>4. 进阶自动化</h3><ul>
+<li>参考B站大佬的视频<a href="https://link.zhihu.com/?target=https://www.bilibili.com/video/BV1Ui4y1T735">BV1Ui4y1T735</a></li>
+</ul>
+<h3 id="5-其他"><a href="#5-其他" class="headerlink" title="5. 其他"></a>5. 其他</h3><ul>
+<li>有问题请联系我，我会进行校对修改</li>
+</ul>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%A0%A1%E5%9B%AD%E7%BD%91%E7%99%BB%E5%BD%95/">校园网登录</a><a class="post-meta__tags" href="/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%84%9A%E6%9C%AC/">自动化脚本</a></div><div class="post_share"><div class="social-share" data-image="https://gitee.com/Wablers/images/raw/master/images/mountain.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button button--animated"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechat.jpg" alt="Wechat"/></a><div class="post-qr-code-desc">Wechat</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/alipay.jpg" alt="Alipay"/></a><div class="post-qr-code-desc">Alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2021/10/09/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%80%EF%BC%89/"><img class="next-cover" src="https://gitee.com/Wablers/images/raw/master/images/forest.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">贪心算法（一）</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Lin</div><div class="author-info__description">Share as You Wish to Update</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">23</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">17</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/LinFallen"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="mailto:wablers@163.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">Welcome to Blog of Wablers</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%97%E4%BA%AC%E6%9E%97%E4%B8%9A%E5%A4%A7%E5%AD%A6CMCC-EDU%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95"><span class="toc-number">1.</span> <span class="toc-text">南京林业大学CMCC-EDU自动登录</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%B5%E8%84%91%E7%AB%AF%EF%BC%88Windows%EF%BC%89"><span class="toc-number">1.1.</span> <span class="toc-text">电脑端（Windows）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E9%85%8D%E7%BD%AEPython%E7%8E%AF%E5%A2%83"><span class="toc-number">1.1.1.</span> <span class="toc-text">1. 配置Python环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%AE%89%E8%A3%85requests%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93"><span class="toc-number">1.1.2.</span> <span class="toc-text">2. 安装requests第三方库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%88%B6%E4%BD%9C%E5%B9%B6%E8%BF%90%E8%A1%8C%E8%84%9A%E6%9C%AC"><span class="toc-number">1.1.3.</span> <span class="toc-text">3. 制作并运行脚本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E8%BF%9B%E9%98%B6%E8%87%AA%E5%8A%A8%E5%8C%96"><span class="toc-number">1.1.4.</span> <span class="toc-text">4. 进阶自动化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%85%B6%E4%BB%96"><span class="toc-number">1.1.5.</span> <span class="toc-text">5. 其他</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/10/13/%E5%8D%97%E4%BA%AC%E6%9E%97%E4%B8%9A%E5%A4%A7%E5%AD%A6CMCC-EDU%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95/" title="南京林业大学CMCC-EDU自动登录"><img src="https://gitee.com/Wablers/images/raw/master/images/mountain.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="南京林业大学CMCC-EDU自动登录"/></a><div class="content"><a class="title" href="/2021/10/13/%E5%8D%97%E4%BA%AC%E6%9E%97%E4%B8%9A%E5%A4%A7%E5%AD%A6CMCC-EDU%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95/" title="南京林业大学CMCC-EDU自动登录">南京林业大学CMCC-EDU自动登录</a><time datetime="2021-10-13T01:40:16.000Z" title="发表于 2021-10-13 09:40:16">2021-10-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/10/09/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%80%EF%BC%89/" title="贪心算法（一）"><img src="https://gitee.com/Wablers/images/raw/master/images/forest.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="贪心算法（一）"/></a><div class="content"><a class="title" href="/2021/10/09/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%80%EF%BC%89/" title="贪心算法（一）">贪心算法（一）</a><time datetime="2021-10-09T10:52:17.000Z" title="发表于 2021-10-09 18:52:17">2021-10-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/09/30/PAT%E7%94%B2%E7%BA%A7%E4%B9%8B%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86%EF%BC%88%E4%B8%80%EF%BC%89/" title="PAT甲级之字符串处理(一)"><img src="https://gitee.com/Wablers/images/raw/master/images/building.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="PAT甲级之字符串处理(一)"/></a><div class="content"><a class="title" href="/2021/09/30/PAT%E7%94%B2%E7%BA%A7%E4%B9%8B%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86%EF%BC%88%E4%B8%80%EF%BC%89/" title="PAT甲级之字符串处理(一)">PAT甲级之字符串处理(一)</a><time datetime="2021-09-30T09:17:01.000Z" title="发表于 2021-09-30 17:17:01">2021-09-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/06/03/%E5%BD%BB%E5%BA%95%E6%90%9E%E6%87%82C%E6%8C%87%E9%92%88%EF%BC%88%E4%B8%8A%EF%BC%89/" title="彻底搞懂C/C++指针"><img src="https://gitee.com/Wablers/images/raw/master/images/bus.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="彻底搞懂C/C++指针"/></a><div class="content"><a class="title" href="/2021/06/03/%E5%BD%BB%E5%BA%95%E6%90%9E%E6%87%82C%E6%8C%87%E9%92%88%EF%BC%88%E4%B8%8A%EF%BC%89/" title="彻底搞懂C/C++指针">彻底搞懂C/C++指针</a><time datetime="2021-06-03T13:33:40.000Z" title="发表于 2021-06-03 21:33:40">2021-06-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/05/10/Self-learing-Tasks/" title="Self_learing Tasks"><img src="https://gitee.com/Wablers/images/raw/master/images/space.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Self_learing Tasks"/></a><div class="content"><a class="title" href="/2021/05/10/Self-learing-Tasks/" title="Self_learing Tasks">Self_learing Tasks</a><time datetime="2021-05-10T06:58:58.000Z" title="发表于 2021-05-10 14:58:58">2021-05-10</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By Lin</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="rightside.chat_btn"><i class="fas fa-sms"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-ribbon.min.js" size="150" alpha="0.7" zIndex="-2" mobile="true" data-click="true"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
