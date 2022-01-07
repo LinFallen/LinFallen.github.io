@@ -1,0 +1,325 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Visual C++ 程序设计题库及答案 | Wablers</title><meta name="keywords" content="C++,程序设计"><meta name="author" content="Lin"><meta name="copyright" content="Lin"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="1. 结合开发经验，阐述总结传统的过程式编程模式的特性。（1）在一个main函数中调用其他函数来完成各种各样的功能 （2）采用顺序的、关联的、过程驱动的程序设计方法一个程序是一系列预定好的操作序列的组合，它具有一定的开头、中间过程和结果 （3）程序直接控制程序事件和过程的顺序 （4）面向程序而不是面向用户，交互性差，用户界面不友好 2. 结合开发经验，解释何为文档与视图 。​    文档 （1）文">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Visual C++ 程序设计题库及答案">
+<meta property="og:url" content="http://example.com/2022/01/07/Visual%20C++%20%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E9%A2%98%E5%BA%93%E5%8F%8A%E7%AD%94%E6%A1%88/index.html">
+<meta property="og:site_name" content="Wablers">
+<meta property="og:description" content="1. 结合开发经验，阐述总结传统的过程式编程模式的特性。（1）在一个main函数中调用其他函数来完成各种各样的功能 （2）采用顺序的、关联的、过程驱动的程序设计方法一个程序是一系列预定好的操作序列的组合，它具有一定的开头、中间过程和结果 （3）程序直接控制程序事件和过程的顺序 （4）面向程序而不是面向用户，交互性差，用户界面不友好 2. 结合开发经验，解释何为文档与视图 。​    文档 （1）文">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/Wablers/images/raw/master/images/bus.jpg">
+<meta property="article:published_time" content="2022-01-07T12:31:19.000Z">
+<meta property="article:modified_time" content="2022-01-07T12:14:30.535Z">
+<meta property="article:author" content="Lin">
+<meta property="article:tag" content="C++">
+<meta property="article:tag" content="程序设计">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/Wablers/images/raw/master/images/bus.jpg"><link rel="shortcut icon" href="/img/favicon.jpg"><link rel="canonical" href="http://example.com/2022/01/07/Visual%20C++%20%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E9%A2%98%E5%BA%93%E5%8F%8A%E7%AD%94%E6%A1%88/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?292a248418141690f958c1ffeccc9c3e";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-56QZV30ZCS"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-56QZV30ZCS');
+</script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: Lin","link":"链接: ","source":"来源: Wablers","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Visual C++ 程序设计题库及答案',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-01-07 20:14:30'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">34</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">31</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://gitee.com/Wablers/images/raw/master/images/bus.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Wablers</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Visual C++ 程序设计题库及答案</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-01-07T12:31:19.000Z" title="发表于 2022-01-07 20:31:19">2022-01-07</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-01-07T12:14:30.535Z" title="更新于 2022-01-07 20:14:30">2022-01-07</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Visual-C-%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/">Visual C++ 程序设计</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Visual C++ 程序设计题库及答案"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h5 id="1-结合开发经验，阐述总结传统的过程式编程模式的特性。"><a href="#1-结合开发经验，阐述总结传统的过程式编程模式的特性。" class="headerlink" title="1. 结合开发经验，阐述总结传统的过程式编程模式的特性。"></a>1. 结合开发经验，阐述总结传统的过程式编程模式的特性。</h5><p>（1）在一个main函数中调用其他函数来完成各种各样的功能</p>
+<p>（2）采用顺序的、关联的、过程驱动的程序设计方法一个程序是一系列预定好的操作序列的组合，它具有一定的开头、中间过程和结果</p>
+<p>（3）程序直接控制程序事件和过程的顺序</p>
+<p>（4）面向程序而不是面向用户，交互性差，用户界面不友好</p>
+<h5 id="2-结合开发经验，解释何为文档与视图-。"><a href="#2-结合开发经验，解释何为文档与视图-。" class="headerlink" title="2. 结合开发经验，解释何为文档与视图 。"></a>2. 结合开发经验，解释何为文档与视图 。</h5><p>​    <strong>文档</strong></p>
+<p>（1）文档是一种数据源，数据源最常见的是磁盘文件</p>
+<p>（2）负责将数据保存到永久存储介质中，最常见的是保存到磁盘或数据库（串行化）</p>
+<p>​    <strong>视图</strong></p>
+<p>（1）视图是数据的用户窗口，为用户提供了文档的可视数据显示</p>
+<p>（2）视图给用户提供与文档中数据交互的界面</p>
+<p>（3）一个文档会有一个或多个视图显示</p>
+<p>（4）视图可以直接访问文档类中的这些成员变量，并通过这种方式来显示和更新数据</p>
+<h5 id="3-结合开发经验，总结-MFC类库中窗口类主要包括哪些下属类。"><a href="#3-结合开发经验，总结-MFC类库中窗口类主要包括哪些下属类。" class="headerlink" title="3. 结合开发经验，总结 MFC类库中窗口类主要包括哪些下属类。"></a>3. 结合开发经验，总结 MFC类库中窗口类主要包括哪些下属类。</h5><p>（1）窗口类 CWnd（所有窗口类的基类）</p>
+<p>（2）框架窗口类</p>
+<p>（3）视图类</p>
+<p>（4）对话框类</p>
+<p>（5）控件类</p>
+<p>（6）控件栏类</p>
+<p>（6）属性页类</p>
+<h5 id="4-在WINDOWS中，-控件分为哪三类？各包含哪些"><a href="#4-在WINDOWS中，-控件分为哪三类？各包含哪些" class="headerlink" title="4. 在WINDOWS中， 控件分为哪三类？各包含哪些"></a>4. 在WINDOWS中， 控件分为哪三类？各包含哪些</h5><p>（1）Windows常用控件</p>
+<ul>
+<li>文本控件</li>
+<li>编辑框控件</li>
+<li>按钮控件</li>
+<li>复选框控件</li>
+<li>列表框控件</li>
+<li>组合框控件</li>
+</ul>
+<p>（2）ActiveX控件</p>
+<ul>
+<li>列表视图控件</li>
+<li>树视图控件</li>
+</ul>
+<p>（3）其他MFC类库所支持的控件类</p>
+<ul>
+<li>BitmapButton类——位图按钮</li>
+<li>CCheckListBox类——复选列表框</li>
+<li>CDragListBox类——拖放列表框</li>
+<li>CProgressCtr类——进度条类</li>
+<li>CSliderCtr类——滑块控件类</li>
+<li>CToolBar类——工具栏类</li>
+<li>CStatusBar类——状态栏类</li>
+</ul>
+<h5 id="5-开发经验，阐述创建控件的方法一般有哪二种。"><a href="#5-开发经验，阐述创建控件的方法一般有哪二种。" class="headerlink" title="5. 开发经验，阐述创建控件的方法一般有哪二种。"></a>5. 开发经验，阐述创建控件的方法一般有哪二种。</h5><p>（1）利用对话框资源编辑器向对话框添加控件</p>
+<p>​        利用对话框编辑器，通过交互操作向对话框中添加控件，然后通过控件的ID值与程序相连，实现调用。步骤如下：</p>
+<ol>
+<li>打开对话框资源编辑器，利用控件工具栏可视化地向对话框模板中添加控件</li>
+<li>构造对话框对象</li>
+<li>调用此对象的 Create() 成员函数或 DoModal() 成员函数，系统将自动创建相应的控件，并将其放入对话框窗口中。</li>
+</ol>
+<p>（2）手动添加控件</p>
+<p>​        用户能够向框架窗口或对话框中添加所需的控件，这种方法的灵活性很大。步骤如下。</p>
+<ol>
+<li>在框架窗口类或对话框类的声明文件中构造一个控件对象。</li>
+<li>调用该控件类的 Create 函数，真正地创建控件。当用户向框架窗口中添加控件时，应当在该框架窗口的 OnCreate() 成员函数中调用控件的 Create 函数；而当用户向对话框中添加控件时，则应当在该对话框类的 OnInitDialog() 成员函数中调用控件的 Create 函数。</li>
+</ol>
+<h5 id="6-MFC类库提供-CEdit-类来管理文本编辑框控件，请列举-CEdit-类的常用函数有哪些，并提供简要说明"><a href="#6-MFC类库提供-CEdit-类来管理文本编辑框控件，请列举-CEdit-类的常用函数有哪些，并提供简要说明" class="headerlink" title="6. MFC类库提供 CEdit 类来管理文本编辑框控件，请列举 CEdit 类的常用函数有哪些，并提供简要说明"></a>6. MFC类库提供 CEdit 类来管理文本编辑框控件，请列举 CEdit 类的常用函数有哪些，并提供简要说明</h5><ul>
+<li>Create——创建一个CEdit控件</li>
+<li>SetReadOnly——设置文本为只读格式，不能编辑文本</li>
+<li>SetSel ——选择编辑框中的文本范围</li>
+<li>GetSel——获取用户在文本中的选择</li>
+<li>GetLine——获取控件中的一行文本</li>
+<li>GetLineCount——获取多行文本控件的文本行数</li>
+<li>LimitText——限制文本长度</li>
+<li>Clear——清楚选定的文本</li>
+</ul>
+<h5 id="7-MFC-类库提供-CListBox-类来管理列表框控件，请列举-CListBox-类的常用函数有哪些，并提供简要说明"><a href="#7-MFC-类库提供-CListBox-类来管理列表框控件，请列举-CListBox-类的常用函数有哪些，并提供简要说明" class="headerlink" title="7. MFC 类库提供 CListBox 类来管理列表框控件，请列举 CListBox 类的常用函数有哪些，并提供简要说明"></a>7. MFC 类库提供 CListBox 类来管理列表框控件，请列举 CListBox 类的常用函数有哪些，并提供简要说明</h5><ul>
+<li>Create——创建一个CListBox控件</li>
+<li>GetCount——获取列表框中的项目数</li>
+<li>GetCurSel——获取列表框中选中项目的索引，从0开始</li>
+<li>SetCurSel——选定列表框中的一个项目</li>
+<li>AddString——向列表框中添加一个字符串</li>
+<li>InsertString——在指定索引处插入一个字符串</li>
+<li>DeleteString——删除列表框框控件的一个字符串</li>
+<li>SelectString——从列表框控件中寻找字符串，如果找到，则该字符串被选中</li>
+<li>ResetContent——删除列表框控件中的所有字符串</li>
+<li>GetLBText——获取列表框中选择的字符串</li>
+</ul>
+<h5 id="8-MFC-类库提供-CComboBox-类来管理列表框控件，请列举-CComboBox-类的常用函数有哪些，并提供简要说明"><a href="#8-MFC-类库提供-CComboBox-类来管理列表框控件，请列举-CComboBox-类的常用函数有哪些，并提供简要说明" class="headerlink" title="8. MFC 类库提供 CComboBox 类来管理列表框控件，请列举 CComboBox 类的常用函数有哪些，并提供简要说明"></a>8. MFC 类库提供 CComboBox 类来管理列表框控件，请列举 CComboBox 类的常用函数有哪些，并提供简要说明</h5><ul>
+<li>Create——创建一个CComboBox控件</li>
+<li>GetCount——获取组合框中的项目数</li>
+<li>GetCurSel——获取组合框中选中项目的索引，从0开始</li>
+<li>SetCurSel——选定组合框中的一个项目</li>
+<li>AddString——向组合框中添加一个字符串</li>
+<li>InsertString——在指定索引处插入一个字符串</li>
+<li>DeleteString——删除组合框控件的一个字符串</li>
+<li>SelectString——从列表框控件中寻找字符串，如果找到，则该字符串被选中</li>
+<li>ResetContent——删除列表框控件中的所有字符串</li>
+<li>GetLBText——获取列表框中选择的字符串</li>
+</ul>
+<h5 id="9-结合开发经验，阐述总结文档视图结构的主要优点。"><a href="#9-结合开发经验，阐述总结文档视图结构的主要优点。" class="headerlink" title="9. 结合开发经验，阐述总结文档视图结构的主要优点。"></a>9. 结合开发经验，阐述总结文档视图结构的主要优点。</h5><p>（1）将数据操作和数据显示、用户界面分离开。使模块划分更为合理、模块独立性更强，同时简化了数据操作和数据显示</p>
+<p>（2）MFC 在文档/视图结构上提供了许多标准操作界面，包括新建文件、打开文件、保存文件等，减轻了用户的工作量</p>
+<p>（3）支持打印预览和电子邮件发送功能</p>
+<h5 id="10-结合开发经验，解释何为事件驱动编程模式-。"><a href="#10-结合开发经验，解释何为事件驱动编程模式-。" class="headerlink" title="10. 结合开发经验，解释何为事件驱动编程模式 。"></a>10. 结合开发经验，解释何为事件驱动编程模式 。</h5><p>（1）以窗口为中心，根据用户的不同操作激活处理相应事件的代码并完成相应的任务</p>
+<p>（2）全新的程序设计方法，不由事件的顺序来控制，而是由事件的发生来控制，用户可以用各种合理的顺序来安排程序的流程</p>
+<p>（3）面向用户的程序设计方法，它的程序设计过程除了完成所需功能之外，更多地考虑了用户的输入</p>
+<p>（4）“被动”式的程序设计方法，程序开始运行时，处于等待用户输入事件状态，然后做出反应，处理完毕后又处于等待状态。</p>
+<h5 id="11-结合开发经验，总结-MFC-主要有哪些特性。"><a href="#11-结合开发经验，总结-MFC-主要有哪些特性。" class="headerlink" title="11. 结合开发经验，总结 MFC 主要有哪些特性。"></a>11. 结合开发经验，总结 MFC 主要有哪些特性。</h5><p>（1）封装了 Windows AP，程序可以在任何时候调⽤ WindowsAPI 函数，最⼤程度的利⽤了Windows. </p>
+<p>（2）提供了⼀些通⽤类的⽀持，如列表，数组和映射类的集合、字符串类，时间⽇期类、⽂件访问类等 </p>
+<p>（3）具有丰富的⽤户界⾯特性⽀持单⽂档视图(SDI)结构、多⽂档视图(MDI)结构、对话框、菜单、常⽤控 件、打印预览和打印 </p>
+<p>（4）⽀持动态链接库 DLL，使 DLL 的编写越来越简单</p>
+<p>（5）⽀持数据库访问。提供了多种数据库开发技术，主要包括 ODBC API,MFC ODBC、DAO、OLE DB 和 ADO </p>
+<p>（6）⽀持⽹络通信。使⽤ ISAPI (⽹络服务接⼝)、Windows Socket 以及封装的 Win32 Internet接⼝ ，使⽹ 络通信编程更为轻松。 </p>
+<p>（7）⽀持 OLE (对象链接和嵌⼊)。⽀持对象嵌⼊、对象链接和⾃动化的 OLE 服务器和容器。 </p>
+<p>（8）⽀持 ActiveX 控件。可以⽅便地⽣成和使⽤ ActiveX 控件</p>
+<h5 id="12-在-MFC-中，如何自绘标准按钮控件？"><a href="#12-在-MFC-中，如何自绘标准按钮控件？" class="headerlink" title="12. 在 MFC 中，如何自绘标准按钮控件？"></a>12. 在 MFC 中，如何自绘标准按钮控件？</h5><p>（1）为按钮添加 BS_OWNERDRAW属性，并重载虚函数 PreSubClassWindow 和 DrawItem</p>
+<p>（2）添加 VM_MOUSELEAVE，WM_MOUSEHOVER 和WM_MOUSEMOVE消息等</p>
+<p>（3）实现 VM_MOUSELEAVE 和 WM_MOUSEHOVER消息并调用 InvalidateRect 让按钮重绘</p>
+<h5 id="13-阐述-MFC-开发应用中，-MFC-库链接的方式。"><a href="#13-阐述-MFC-开发应用中，-MFC-库链接的方式。" class="headerlink" title="13. 阐述 MFC 开发应用中， MFC 库链接的方式。"></a>13. 阐述 MFC 开发应用中， MFC 库链接的方式。</h5><p>（1）静态链接</p>
+<p>（2）动态链接</p>
+<h5 id="14-对-Windows-提供的标准控件和公共控件进行解释。"><a href="#14-对-Windows-提供的标准控件和公共控件进行解释。" class="headerlink" title="14. 对 Windows 提供的标准控件和公共控件进行解释。"></a>14. 对 Windows 提供的标准控件和公共控件进行解释。</h5><ul>
+<li><p>标准控件</p>
+<ul>
+<li><p>利用标准控件可以满足大部分用户界面程序设计的要求</p>
+</li>
+<li><p>创建方式：</p>
+<p>（1）静态创建</p>
+<p>​        静态控件通常不发送消息，其他控件对于用户的操作都能发送消息，且消息类别不同</p>
+<p>（2）动态创建</p>
+<p>​        动态控件是指在需要时由Create()创建的控件，动态控件的响应函数只能手动添加，由于动态控件对象是由new生成的，它不会被程序自动释放，所以需手工释放。</p>
+</li>
+</ul>
+</li>
+<li><p>公共控件</p>
+<ul>
+<li>公共控件起到桥梁作用，通过公共控件可以使编写的程序实现和 Windows 系统的无缝结合</li>
+<li>弥补了传统控件的某些不足</li>
+<li>实现应用程序用户界面风格的多样性</li>
+</ul>
+</li>
+</ul>
+<h5 id="15-在使用应用程序向导生成MFC应用程序框架时，除了关于对话框类-CAboutDlg，向导还会生成若干个类，并为每一个类都创建了对应的头文件和实现文件，请逐一解释这些头文件的名称以及各自的作用。"><a href="#15-在使用应用程序向导生成MFC应用程序框架时，除了关于对话框类-CAboutDlg，向导还会生成若干个类，并为每一个类都创建了对应的头文件和实现文件，请逐一解释这些头文件的名称以及各自的作用。" class="headerlink" title="15. 在使用应用程序向导生成MFC应用程序框架时，除了关于对话框类 CAboutDlg，向导还会生成若干个类，并为每一个类都创建了对应的头文件和实现文件，请逐一解释这些头文件的名称以及各自的作用。"></a>15. 在使用应用程序向导生成MFC应用程序框架时，除了关于对话框类 CAboutDlg，向导还会生成若干个类，并为每一个类都创建了对应的头文件和实现文件，请逐一解释这些头文件的名称以及各自的作用。</h5><p>（1）框架窗口类头文件 SDI_Example.h：用于定义框架窗口 CMainFrame</p>
+<p>（2）文档类头文件 SDI_ExampleDoc.h：用于定义文档类 CSDI_ExampleDoc</p>
+<p>（3）视图类头文件 SDI_ExampleView.h：用于定义视图类 CSDI——ExampleView</p>
+<p>（4）应用程序类头文件 SDI_Example.h：用于定义应用类 CSDI_ExampleApp</p>
+<p>（5）资源类头文件 Resource.h：资源通过资源标识符加以区别，将项目中所有的资源标识符都放在 Resource.h 中定义</p>
+<p>（6）标准包含头文件 Stdafx.h：用于包含一般情况下要用到且不会被修改的头文件</p>
+<h5 id="16-假如有这么一个应用，目的是动态地使一串按钮从左到右显示，以达到流水的效果，请给出详细的核心实现代码。并予以简单的解释说明。"><a href="#16-假如有这么一个应用，目的是动态地使一串按钮从左到右显示，以达到流水的效果，请给出详细的核心实现代码。并予以简单的解释说明。" class="headerlink" title="16. 假如有这么一个应用，目的是动态地使一串按钮从左到右显示，以达到流水的效果，请给出详细的核心实现代码。并予以简单的解释说明。"></a>16. 假如有这么一个应用，目的是动态地使一串按钮从左到右显示，以达到流水的效果，请给出详细的核心实现代码。并予以简单的解释说明。</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">14</span>; i &gt; <span class="number">1</span>; i--) &#123;</span><br><span class="line">    GetDlgItem(<span class="built_in">array</span>[i]-&gt;ShowWindow(<span class="literal">true</span>));</span><br><span class="line">    UpdateWindow();</span><br><span class="line">    </span><br><span class="line">    Sleep(<span class="number">1000</span>);</span><br><span class="line">    </span><br><span class="line">    GetDlgItem(<span class="built_in">array</span>[i]-&gt;ShowWindow(<span class="literal">false</span>));</span><br><span class="line">    UpdateWindow();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>array</code> 是按钮 ID 的数组，使按钮依次亮起然后熄灭</p>
+<p>调用<code>GetDlgItem(array[i]-&gt;ShowWindow(true));</code>从而调用<code>onpaint</code>函数进行一次窗口重绘，同时紧跟调用<code>UpdateWindow();</code>让<code>onpaint</code>函数立即进行重绘</p>
+<h5 id="17-在控件属性对话框的常规属性中，有哪些控件共同的属性？"><a href="#17-在控件属性对话框的常规属性中，有哪些控件共同的属性？" class="headerlink" title="17. 在控件属性对话框的常规属性中，有哪些控件共同的属性？"></a>17. 在控件属性对话框的常规属性中，有哪些控件共同的属性？</h5><ul>
+<li>ID——控件的标识符</li>
+<li>Caption——文字说明</li>
+<li>Visible——是否可见</li>
+<li>Tabstop——用户可以用Tab移动到具有该属性的控件上</li>
+<li>Group——指定一组控件</li>
+<li>Help ID——帮助标识符</li>
+<li>Client edge——增加一个凹陷的边界</li>
+<li>Static edge——增加一个边界</li>
+<li>Modal frame——增加一个三维的框架</li>
+<li>Transparent——是否透明</li>
+<li>Accept files——可以接受拖放文件</li>
+<li>No parent notify——不向其父窗口发松</li>
+<li>WM_PARENTNOTIFY消息</li>
+<li>Right aligned text——文本对齐</li>
+</ul>
+<h5 id="18-结合开发经验，阐述在-Visual-C-中的数据库访问技术中-ODBC-的层次结构-。"><a href="#18-结合开发经验，阐述在-Visual-C-中的数据库访问技术中-ODBC-的层次结构-。" class="headerlink" title="18. 结合开发经验，阐述在 Visual C++ 中的数据库访问技术中 ODBC 的层次结构 。"></a>18. 结合开发经验，阐述在 Visual C++ 中的数据库访问技术中 ODBC 的层次结构 。</h5><p>（1）应用程序（Application）</p>
+<p>（2）ODBC 管理器（Administrator）</p>
+<p>（3）驱动程序管理器（Driver Manager）</p>
+<p>（4）ODBC API</p>
+<p>（5）ODBC 驱动程序</p>
+<p>（6）数据源（Data Source）</p>
+<h1 id="欢迎打赏"><a href="#欢迎打赏" class="headerlink" title="欢迎打赏"></a>欢迎打赏</h1><p><img src="https://gitee.com/Wablers/images/raw/master/images/alipay.jpg" style="zoom:15%;" /> <img src="https://gitee.com/Wablers/images/raw/master/images/wechatpay.jpg" style="zoom:15%;" /></p>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/C/">C++</a><a class="post-meta__tags" href="/tags/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/">程序设计</a></div><div class="post_share"><div class="social-share" data-image="https://gitee.com/Wablers/images/raw/master/images/bus.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button button--animated"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechat.jpg" alt="Wechat"/></a><div class="post-qr-code-desc">Wechat</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/alipay.jpg" alt="Alipay"/></a><div class="post-qr-code-desc">Alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2021/12/20/%E8%93%9D%E6%A1%A5%E6%9D%AF%E4%B9%8B%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84%E5%92%8C%E7%BA%BF%E6%AE%B5%E6%A0%91/"><img class="next-cover" src="https://gitee.com/Wablers/images/raw/master/images/clean.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">蓝桥杯之树状数组和线段树</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2021/04/27/二分法查找/" title="二分查找"><img class="cover" src="https://gitee.com/Wablers/images/raw/master/images/bus.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-04-27</div><div class="title">二分查找</div></div></a></div><div><a href="/2021/11/29/归纳与总结《Effective_C_plus_plus》/" title="归纳与总结《Effective C++》"><img class="cover" src="https://gitee.com/Wablers/images/raw/master/images/bus.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-11-29</div><div class="title">归纳与总结《Effective C++》</div></div></a></div><div><a href="/2021/04/26/数组理论基础/" title="数组理论基础"><img class="cover" src="https://gitee.com/Wablers/images/raw/master/images/flower.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-04-26</div><div class="title">数组理论基础</div></div></a></div><div><a href="/2021/05/06/移除元素/" title="移除元素"><img class="cover" src="https://gitee.com/Wablers/images/raw/master/images/bus.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-06</div><div class="title">移除元素</div></div></a></div><div><a href="/2021/05/08/长度最小的子数组/" title="长度最小的子数组"><img class="cover" src="https://gitee.com/Wablers/images/raw/master/images/forest.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-08</div><div class="title">长度最小的子数组</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Lin</div><div class="author-info__description">Share as You Wish to Update</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">34</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">31</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/LinFallen"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="mailto:wablers@163.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">Welcome to Blog of Wablers</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E7%BB%93%E5%90%88%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C%EF%BC%8C%E9%98%90%E8%BF%B0%E6%80%BB%E7%BB%93%E4%BC%A0%E7%BB%9F%E7%9A%84%E8%BF%87%E7%A8%8B%E5%BC%8F%E7%BC%96%E7%A8%8B%E6%A8%A1%E5%BC%8F%E7%9A%84%E7%89%B9%E6%80%A7%E3%80%82"><span class="toc-number">1.</span> <span class="toc-text">1. 结合开发经验，阐述总结传统的过程式编程模式的特性。</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E7%BB%93%E5%90%88%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C%EF%BC%8C%E8%A7%A3%E9%87%8A%E4%BD%95%E4%B8%BA%E6%96%87%E6%A1%A3%E4%B8%8E%E8%A7%86%E5%9B%BE-%E3%80%82"><span class="toc-number">2.</span> <span class="toc-text">2. 结合开发经验，解释何为文档与视图 。</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-%E7%BB%93%E5%90%88%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C%EF%BC%8C%E6%80%BB%E7%BB%93-MFC%E7%B1%BB%E5%BA%93%E4%B8%AD%E7%AA%97%E5%8F%A3%E7%B1%BB%E4%B8%BB%E8%A6%81%E5%8C%85%E6%8B%AC%E5%93%AA%E4%BA%9B%E4%B8%8B%E5%B1%9E%E7%B1%BB%E3%80%82"><span class="toc-number">3.</span> <span class="toc-text">3. 结合开发经验，总结 MFC类库中窗口类主要包括哪些下属类。</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-%E5%9C%A8WINDOWS%E4%B8%AD%EF%BC%8C-%E6%8E%A7%E4%BB%B6%E5%88%86%E4%B8%BA%E5%93%AA%E4%B8%89%E7%B1%BB%EF%BC%9F%E5%90%84%E5%8C%85%E5%90%AB%E5%93%AA%E4%BA%9B"><span class="toc-number">4.</span> <span class="toc-text">4. 在WINDOWS中， 控件分为哪三类？各包含哪些</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C%EF%BC%8C%E9%98%90%E8%BF%B0%E5%88%9B%E5%BB%BA%E6%8E%A7%E4%BB%B6%E7%9A%84%E6%96%B9%E6%B3%95%E4%B8%80%E8%88%AC%E6%9C%89%E5%93%AA%E4%BA%8C%E7%A7%8D%E3%80%82"><span class="toc-number">5.</span> <span class="toc-text">5. 开发经验，阐述创建控件的方法一般有哪二种。</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-MFC%E7%B1%BB%E5%BA%93%E6%8F%90%E4%BE%9B-CEdit-%E7%B1%BB%E6%9D%A5%E7%AE%A1%E7%90%86%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E6%A1%86%E6%8E%A7%E4%BB%B6%EF%BC%8C%E8%AF%B7%E5%88%97%E4%B8%BE-CEdit-%E7%B1%BB%E7%9A%84%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%8C%E5%B9%B6%E6%8F%90%E4%BE%9B%E7%AE%80%E8%A6%81%E8%AF%B4%E6%98%8E"><span class="toc-number">6.</span> <span class="toc-text">6. MFC类库提供 CEdit 类来管理文本编辑框控件，请列举 CEdit 类的常用函数有哪些，并提供简要说明</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#7-MFC-%E7%B1%BB%E5%BA%93%E6%8F%90%E4%BE%9B-CListBox-%E7%B1%BB%E6%9D%A5%E7%AE%A1%E7%90%86%E5%88%97%E8%A1%A8%E6%A1%86%E6%8E%A7%E4%BB%B6%EF%BC%8C%E8%AF%B7%E5%88%97%E4%B8%BE-CListBox-%E7%B1%BB%E7%9A%84%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%8C%E5%B9%B6%E6%8F%90%E4%BE%9B%E7%AE%80%E8%A6%81%E8%AF%B4%E6%98%8E"><span class="toc-number">7.</span> <span class="toc-text">7. MFC 类库提供 CListBox 类来管理列表框控件，请列举 CListBox 类的常用函数有哪些，并提供简要说明</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#8-MFC-%E7%B1%BB%E5%BA%93%E6%8F%90%E4%BE%9B-CComboBox-%E7%B1%BB%E6%9D%A5%E7%AE%A1%E7%90%86%E5%88%97%E8%A1%A8%E6%A1%86%E6%8E%A7%E4%BB%B6%EF%BC%8C%E8%AF%B7%E5%88%97%E4%B8%BE-CComboBox-%E7%B1%BB%E7%9A%84%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%8C%E5%B9%B6%E6%8F%90%E4%BE%9B%E7%AE%80%E8%A6%81%E8%AF%B4%E6%98%8E"><span class="toc-number">8.</span> <span class="toc-text">8. MFC 类库提供 CComboBox 类来管理列表框控件，请列举 CComboBox 类的常用函数有哪些，并提供简要说明</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#9-%E7%BB%93%E5%90%88%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C%EF%BC%8C%E9%98%90%E8%BF%B0%E6%80%BB%E7%BB%93%E6%96%87%E6%A1%A3%E8%A7%86%E5%9B%BE%E7%BB%93%E6%9E%84%E7%9A%84%E4%B8%BB%E8%A6%81%E4%BC%98%E7%82%B9%E3%80%82"><span class="toc-number">9.</span> <span class="toc-text">9. 结合开发经验，阐述总结文档视图结构的主要优点。</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#10-%E7%BB%93%E5%90%88%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C%EF%BC%8C%E8%A7%A3%E9%87%8A%E4%BD%95%E4%B8%BA%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8%E7%BC%96%E7%A8%8B%E6%A8%A1%E5%BC%8F-%E3%80%82"><span class="toc-number">10.</span> <span class="toc-text">10. 结合开发经验，解释何为事件驱动编程模式 。</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#11-%E7%BB%93%E5%90%88%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C%EF%BC%8C%E6%80%BB%E7%BB%93-MFC-%E4%B8%BB%E8%A6%81%E6%9C%89%E5%93%AA%E4%BA%9B%E7%89%B9%E6%80%A7%E3%80%82"><span class="toc-number">11.</span> <span class="toc-text">11. 结合开发经验，总结 MFC 主要有哪些特性。</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#12-%E5%9C%A8-MFC-%E4%B8%AD%EF%BC%8C%E5%A6%82%E4%BD%95%E8%87%AA%E7%BB%98%E6%A0%87%E5%87%86%E6%8C%89%E9%92%AE%E6%8E%A7%E4%BB%B6%EF%BC%9F"><span class="toc-number">12.</span> <span class="toc-text">12. 在 MFC 中，如何自绘标准按钮控件？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#13-%E9%98%90%E8%BF%B0-MFC-%E5%BC%80%E5%8F%91%E5%BA%94%E7%94%A8%E4%B8%AD%EF%BC%8C-MFC-%E5%BA%93%E9%93%BE%E6%8E%A5%E7%9A%84%E6%96%B9%E5%BC%8F%E3%80%82"><span class="toc-number">13.</span> <span class="toc-text">13. 阐述 MFC 开发应用中， MFC 库链接的方式。</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#14-%E5%AF%B9-Windows-%E6%8F%90%E4%BE%9B%E7%9A%84%E6%A0%87%E5%87%86%E6%8E%A7%E4%BB%B6%E5%92%8C%E5%85%AC%E5%85%B1%E6%8E%A7%E4%BB%B6%E8%BF%9B%E8%A1%8C%E8%A7%A3%E9%87%8A%E3%80%82"><span class="toc-number">14.</span> <span class="toc-text">14. 对 Windows 提供的标准控件和公共控件进行解释。</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#15-%E5%9C%A8%E4%BD%BF%E7%94%A8%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E5%90%91%E5%AF%BC%E7%94%9F%E6%88%90MFC%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E6%A1%86%E6%9E%B6%E6%97%B6%EF%BC%8C%E9%99%A4%E4%BA%86%E5%85%B3%E4%BA%8E%E5%AF%B9%E8%AF%9D%E6%A1%86%E7%B1%BB-CAboutDlg%EF%BC%8C%E5%90%91%E5%AF%BC%E8%BF%98%E4%BC%9A%E7%94%9F%E6%88%90%E8%8B%A5%E5%B9%B2%E4%B8%AA%E7%B1%BB%EF%BC%8C%E5%B9%B6%E4%B8%BA%E6%AF%8F%E4%B8%80%E4%B8%AA%E7%B1%BB%E9%83%BD%E5%88%9B%E5%BB%BA%E4%BA%86%E5%AF%B9%E5%BA%94%E7%9A%84%E5%A4%B4%E6%96%87%E4%BB%B6%E5%92%8C%E5%AE%9E%E7%8E%B0%E6%96%87%E4%BB%B6%EF%BC%8C%E8%AF%B7%E9%80%90%E4%B8%80%E8%A7%A3%E9%87%8A%E8%BF%99%E4%BA%9B%E5%A4%B4%E6%96%87%E4%BB%B6%E7%9A%84%E5%90%8D%E7%A7%B0%E4%BB%A5%E5%8F%8A%E5%90%84%E8%87%AA%E7%9A%84%E4%BD%9C%E7%94%A8%E3%80%82"><span class="toc-number">15.</span> <span class="toc-text">15. 在使用应用程序向导生成MFC应用程序框架时，除了关于对话框类 CAboutDlg，向导还会生成若干个类，并为每一个类都创建了对应的头文件和实现文件，请逐一解释这些头文件的名称以及各自的作用。</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#16-%E5%81%87%E5%A6%82%E6%9C%89%E8%BF%99%E4%B9%88%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8%EF%BC%8C%E7%9B%AE%E7%9A%84%E6%98%AF%E5%8A%A8%E6%80%81%E5%9C%B0%E4%BD%BF%E4%B8%80%E4%B8%B2%E6%8C%89%E9%92%AE%E4%BB%8E%E5%B7%A6%E5%88%B0%E5%8F%B3%E6%98%BE%E7%A4%BA%EF%BC%8C%E4%BB%A5%E8%BE%BE%E5%88%B0%E6%B5%81%E6%B0%B4%E7%9A%84%E6%95%88%E6%9E%9C%EF%BC%8C%E8%AF%B7%E7%BB%99%E5%87%BA%E8%AF%A6%E7%BB%86%E7%9A%84%E6%A0%B8%E5%BF%83%E5%AE%9E%E7%8E%B0%E4%BB%A3%E7%A0%81%E3%80%82%E5%B9%B6%E4%BA%88%E4%BB%A5%E7%AE%80%E5%8D%95%E7%9A%84%E8%A7%A3%E9%87%8A%E8%AF%B4%E6%98%8E%E3%80%82"><span class="toc-number">16.</span> <span class="toc-text">16. 假如有这么一个应用，目的是动态地使一串按钮从左到右显示，以达到流水的效果，请给出详细的核心实现代码。并予以简单的解释说明。</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#17-%E5%9C%A8%E6%8E%A7%E4%BB%B6%E5%B1%9E%E6%80%A7%E5%AF%B9%E8%AF%9D%E6%A1%86%E7%9A%84%E5%B8%B8%E8%A7%84%E5%B1%9E%E6%80%A7%E4%B8%AD%EF%BC%8C%E6%9C%89%E5%93%AA%E4%BA%9B%E6%8E%A7%E4%BB%B6%E5%85%B1%E5%90%8C%E7%9A%84%E5%B1%9E%E6%80%A7%EF%BC%9F"><span class="toc-number">17.</span> <span class="toc-text">17. 在控件属性对话框的常规属性中，有哪些控件共同的属性？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#18-%E7%BB%93%E5%90%88%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C%EF%BC%8C%E9%98%90%E8%BF%B0%E5%9C%A8-Visual-C-%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BF%E9%97%AE%E6%8A%80%E6%9C%AF%E4%B8%AD-ODBC-%E7%9A%84%E5%B1%82%E6%AC%A1%E7%BB%93%E6%9E%84-%E3%80%82"><span class="toc-number">18.</span> <span class="toc-text">18. 结合开发经验，阐述在 Visual C++ 中的数据库访问技术中 ODBC 的层次结构 。</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AC%A2%E8%BF%8E%E6%89%93%E8%B5%8F"><span class="toc-number"></span> <span class="toc-text">欢迎打赏</span></a></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/01/07/Visual%20C++%20%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E9%A2%98%E5%BA%93%E5%8F%8A%E7%AD%94%E6%A1%88/" title="Visual C++ 程序设计题库及答案"><img src="https://gitee.com/Wablers/images/raw/master/images/bus.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Visual C++ 程序设计题库及答案"/></a><div class="content"><a class="title" href="/2022/01/07/Visual%20C++%20%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E9%A2%98%E5%BA%93%E5%8F%8A%E7%AD%94%E6%A1%88/" title="Visual C++ 程序设计题库及答案">Visual C++ 程序设计题库及答案</a><time datetime="2022-01-07T12:31:19.000Z" title="发表于 2022-01-07 20:31:19">2022-01-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/12/20/%E8%93%9D%E6%A1%A5%E6%9D%AF%E4%B9%8B%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84%E5%92%8C%E7%BA%BF%E6%AE%B5%E6%A0%91/" title="蓝桥杯之树状数组和线段树"><img src="https://gitee.com/Wablers/images/raw/master/images/clean.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="蓝桥杯之树状数组和线段树"/></a><div class="content"><a class="title" href="/2021/12/20/%E8%93%9D%E6%A1%A5%E6%9D%AF%E4%B9%8B%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84%E5%92%8C%E7%BA%BF%E6%AE%B5%E6%A0%91/" title="蓝桥杯之树状数组和线段树">蓝桥杯之树状数组和线段树</a><time datetime="2021-12-20T08:27:10.000Z" title="发表于 2021-12-20 16:27:10">2021-12-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/12/09/%E8%93%9D%E6%A1%A5%E6%9D%AF%E4%B9%8B%E6%95%B0%E5%AD%A6%E4%B8%8E%E7%AE%80%E5%8D%95DP/" title="蓝桥杯之数学与简单DP"><img src="https://gitee.com/Wablers/images/raw/master/images/space.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="蓝桥杯之数学与简单DP"/></a><div class="content"><a class="title" href="/2021/12/09/%E8%93%9D%E6%A1%A5%E6%9D%AF%E4%B9%8B%E6%95%B0%E5%AD%A6%E4%B8%8E%E7%AE%80%E5%8D%95DP/" title="蓝桥杯之数学与简单DP">蓝桥杯之数学与简单DP</a><time datetime="2021-12-09T06:20:19.000Z" title="发表于 2021-12-09 14:20:19">2021-12-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/12/06/%E8%93%9D%E6%A1%A5%E6%9D%AF%E4%B9%8B%E4%BA%8C%E5%88%86%E4%B8%8E%E5%89%8D%E7%BC%80%E5%92%8C/" title="蓝桥杯之二分与前缀和"><img src="https://gitee.com/Wablers/images/raw/master/images/bus.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="蓝桥杯之二分与前缀和"/></a><div class="content"><a class="title" href="/2021/12/06/%E8%93%9D%E6%A1%A5%E6%9D%AF%E4%B9%8B%E4%BA%8C%E5%88%86%E4%B8%8E%E5%89%8D%E7%BC%80%E5%92%8C/" title="蓝桥杯之二分与前缀和">蓝桥杯之二分与前缀和</a><time datetime="2021-12-06T06:23:15.000Z" title="发表于 2021-12-06 14:23:15">2021-12-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/12/04/%E8%93%9D%E6%A1%A5%E6%9D%AF%E4%B9%8B%E9%80%92%E5%BD%92%E4%B8%8E%E9%80%92%E6%8E%A8/" title="蓝桥杯之递归与递推"><img src="https://gitee.com/Wablers/images/raw/master/images/clean.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="蓝桥杯之递归与递推"/></a><div class="content"><a class="title" href="/2021/12/04/%E8%93%9D%E6%A1%A5%E6%9D%AF%E4%B9%8B%E9%80%92%E5%BD%92%E4%B8%8E%E9%80%92%E6%8E%A8/" title="蓝桥杯之递归与递推">蓝桥杯之递归与递推</a><time datetime="2021-12-04T15:40:17.000Z" title="发表于 2021-12-04 23:40:17">2021-12-04</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By Lin</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="rightside.chat_btn"><i class="fas fa-sms"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-ribbon.min.js" size="150" alpha="0.7" zIndex="-2" mobile="true" data-click="true"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
