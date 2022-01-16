@@ -5,14 +5,14 @@
 <meta property="og:site_name" content="Wablers">
 <meta property="og:description" content="概念  调度：就是指有一堆任务需要处理，但是由于资源有限，不能同时处理，这就需要某种规则来就决定处理  任务的顺序，调度就是用于安排处理顺序的。  处理机调度：就是从就绪队列中按照一定的算法选择一个进程并将处理机分配给它运行，以实现进程的并发        执行    调度的三个层次：  高级调度（作业调度）  目的：由于内存空间有限，有时无法将用户提交的作业全部放入内存，因此就需要确定某种规则">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://gitee.com/Wablers/images/raw/master/images/building.jpg">
+<meta property="og:image" content="https://gitee.com/Wablers/images/raw/master/images/firework2.jpg">
 <meta property="article:published_time" content="2021-04-01T12:58:23.000Z">
 <meta property="article:modified_time" content="2021-04-01T13:06:59.869Z">
 <meta property="article:author" content="Lin">
 <meta property="article:tag" content="计算机操作系统">
 <meta property="article:tag" content="概念详述">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://gitee.com/Wablers/images/raw/master/images/building.jpg"><link rel="shortcut icon" href="/img/favicon.jpg"><link rel="canonical" href="http://example.com/2021/04/01/03-%E5%A4%84%E7%90%86%E6%9C%BA%E8%B0%83%E5%BA%A6/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+<meta name="twitter:image" content="https://gitee.com/Wablers/images/raw/master/images/firework2.jpg"><link rel="shortcut icon" href="/img/favicon.jpg"><link rel="canonical" href="http://example.com/2021/04/01/03-%E5%A4%84%E7%90%86%E6%9C%BA%E8%B0%83%E5%BA%A6/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
 (function() {
   var hm = document.createElement("script");
   hm.src = "https://hm.baidu.com/hm.js?292a248418141690f958c1ffeccc9c3e";
@@ -159,35 +159,33 @@ gtag('config', 'G-56QZV30ZCS');
       }
     }
     detectApple()
-    })(window)</script><meta name="generator" content="Hexo 5.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">35</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">33</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">12</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://gitee.com/Wablers/images/raw/master/images/building.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Wablers</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">03-处理机调度</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-04-01T12:58:23.000Z" title="发表于 2021-04-01 20:58:23">2021-04-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-04-01T13:06:59.869Z" title="更新于 2021-04-01 21:06:59">2021-04-01</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">计算机操作系统</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="03-处理机调度"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><ol>
+    })(window)</script><meta name="generator" content="Hexo 5.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">35</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">33</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">12</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://gitee.com/Wablers/images/raw/master/images/firework2.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Wablers</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">03-处理机调度</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-04-01T12:58:23.000Z" title="发表于 2021-04-01 20:58:23">2021-04-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-04-01T13:06:59.869Z" title="更新于 2021-04-01 21:06:59">2021-04-01</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">计算机操作系统</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="03-处理机调度"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><ol>
 <li><p>概念</p>
 <ul>
 <li><p>调度：就是指有一堆任务需要处理，但是由于资源有限，不能同时处理，这就需要某种规则来就决定处理</p>
-<pre><code> 任务的顺序，调度就是用于安排处理顺序的。</code></pre>
-</li>
+<pre><code> 任务的顺序，调度就是用于安排处理顺序的。
+</code></pre></li>
 <li><p>处理机调度：就是从就绪队列中按照一定的算法选择一个进程并将处理机分配给它运行，以实现进程的并发</p>
-<pre><code>       执行</code></pre>
-</li>
+<pre><code>       执行
+</code></pre></li>
 </ul>
 </li>
 <li><p>调度的三个层次：</p>
 <ul>
 <li><p>高级调度（作业调度）</p>
 <ol>
-<li>目的：由于内存空间有限，有时无法将用户提交的作业全部放入内存，因此就需要确定某种规则来决定<pre><code> 将作业调入内存的顺序</code></pre>
-</li>
-<li>定义：按照一定的原则从外存上处于后备队列的作业中挑选一个或多个作业，给他们分配内存等必要资<pre><code> 源并建立相应的进程（建立PCB），以使它们获得竞争处理机的权力</code></pre>
-</li>
+<li>目的：由于内存空间有限，有时无法将用户提交的作业全部放入内存，因此就需要确定某种规则来决定<pre><code> 将作业调入内存的顺序
+</code></pre></li>
+<li>定义：按照一定的原则从外存上处于后备队列的作业中挑选一个或多个作业，给他们分配内存等必要资<pre><code> 源并建立相应的进程（建立PCB），以使它们获得竞争处理机的权力
+</code></pre></li>
 <li>高级调度是外存和内存之间的调度，每个作业只调入一次，调出一次。作业调入时会建立相应的PCB，作<br>业调出时才会撤销PCB。</li>
 <li>注意：高级调度主要是指调入问题，因为调入时间由操作系统确定，调出只有在作业运行结束才调出</li>
 </ol>
 </li>
 <li><p>中级调度（内存调度）</p>
 <ol>
-<li><p>再引入虚拟存储技术之后，可以将暂时不需要执行的进程调至外存，等到它具备运行条件且内存又有空间<br> 的时候，再重新调入内存。这么做的目的是为了提高内存的利用率和系统的吞吐量</p>
-</li>
-<li><p>调到外存的进程会进入到挂起状态</p>
-</li>
+<li>再引入虚拟存储技术之后，可以将暂时不需要执行的进程调至外存，等到它具备运行条件且内存又有空间<br> 的时候，再重新调入内存。这么做的目的是为了提高内存的利用率和系统的吞吐量</li>
+<li>调到外存的进程会进入到挂起状态</li>
 <li><p>中级调度就是要决定将哪个处于挂起状态的进程重新调入内存。值得注意的是，一个进程可能会被多次调<br> 入或调出内存，因此中级调度发生的频率可能要比高级调度发生的频率要高</p>
 </li>
 <li><p>挂起状态与七状态模型</p>
@@ -270,25 +268,19 @@ gtag('config', 'G-56QZV30ZCS');
 <li>按照到达的先后顺序调度，事实上就是等待时间越久的越优先得到服务。</li>
 <li>算法规则：按照作业进程到达的先后顺序进行服务</li>
 <li>优点：公平，算法实现简单</li>
-<li>缺点：排在长作业（进程）后面的短作业需要等待很长时间，带权周转时间很大，对短作业来说用户体验<pre><code>  不好。也就是说，对擦汗那个作业有利，对短作业不利</code></pre>
-</li>
+<li>缺点：排在长作业（进程）后面的短作业需要等待很长时间，带权周转时间很大，对短作业来说用户体验<pre><code>  不好。也就是说，对擦汗那个作业有利，对短作业不利
+</code></pre></li>
 <li>不会导致饥饿</li>
 </ul>
 </li>
 <li><p>短作业优先算法（SJF，Shortest Job First）</p>
 <ul>
-<li><p>算法规则：最短的作业/进程先得到服务（所谓的最短是指要求服务最短）</p>
-</li>
-<li><p>可用于作业调度，也可以用于进程调度。用于进程调度时称为“短进程优先（SPF Shortest Process First）”</p>
-</li>
-<li><p>SJF和SPF是非抢占式算法，但是也有抢占式版本——最短剩余时间优先算法</p>
-</li>
-<li><p>抢占式的短作业/进程优先调度算法（最短剩余时间优先算法）的平均等待时间，平均周转时间最少</p>
-</li>
-<li><p>优点：“最短的”平均等待时间，平均周转时间</p>
-</li>
-<li><p>缺点：不公平。对短作业有利对长作业不利。</p>
-</li>
+<li>算法规则：最短的作业/进程先得到服务（所谓的最短是指要求服务最短）</li>
+<li>可用于作业调度，也可以用于进程调度。用于进程调度时称为“短进程优先（SPF Shortest Process First）”</li>
+<li>SJF和SPF是非抢占式算法，但是也有抢占式版本——最短剩余时间优先算法</li>
+<li>抢占式的短作业/进程优先调度算法（最短剩余时间优先算法）的平均等待时间，平均周转时间最少</li>
+<li>优点：“最短的”平均等待时间，平均周转时间</li>
+<li>缺点：不公平。对短作业有利对长作业不利。</li>
 <li><p>可能出现饥饿现象</p>
 </li>
 <li><p>FCFS与FJS的对比<br>  FCFS在每次调度的时候选择一个等待时间最长的进程来服务，但是没有考虑到作业的执行时间，导致了对短作业<br>  不友好的问题<br>  FJS选择一个执行时间最短的作业为其服务。但是又完全不考虑对作业的等待时间，因此导致对长作业的不友好<br>  甚至会造成饥饿问题</p>
@@ -301,46 +293,36 @@ gtag('config', 'G-56QZV30ZCS');
 <li>算法规则：在每次调度时，会先计算各个作业/进程的响应比，选择作业/进程响应比高的为其服务<br>  响应比=（等待时间 + 要求服务时间）/要求服务时间</li>
 <li>作业调度，进程调度</li>
 <li>非抢占式算法</li>
-<li>优点：综合考虑了等待时间和运行时间（要求服务时间），等待时间相同时，要求服务时间短的优先<pre><code>  要求服务时间相同时，等待时间长的有先</code></pre>
-</li>
+<li>优点：综合考虑了等待时间和运行时间（要求服务时间），等待时间相同时，要求服务时间短的优先<pre><code>  要求服务时间相同时，等待时间长的有先
+</code></pre></li>
 <li>不会导致饥饿</li>
 </ul>
 </li>
 <li><p>时间片轮转调度算法（RR Round-Robin）</p>
 <ul>
-<li><p>轮流让就绪队列中的进程一次执行一个时间片（每次选择的都是排在就绪队列队头的进程）</p>
-</li>
-<li><p>算法思想：公平的、轮流的为各个进程服务，让每个进程在一定时间间隔内都可以得到响应</p>
-</li>
-<li><p>算法规则：按照进程到达就绪队列的顺序，轮流让各个进程执行一个时间片的时间，如果在一个时间片内未执行</p>
-<pre><code>      完，则剥夺处理机，将进程重新放到就绪队列队尾重新排队</code></pre>
-</li>
-<li><p>若在一个时间片内未完成进程，则会被剥夺处理机，所以这个算法属于抢占式算法</p>
-</li>
-<li><p>优点：公平，响应快，适用于分时操作系统</p>
-</li>
+<li>轮流让就绪队列中的进程一次执行一个时间片（每次选择的都是排在就绪队列队头的进程）</li>
+<li>算法思想：公平的、轮流的为各个进程服务，让每个进程在一定时间间隔内都可以得到响应</li>
+<li>算法规则：按照进程到达就绪队列的顺序，轮流让各个进程执行一个时间片的时间，如果在一个时间片内未执行<pre><code>      完，则剥夺处理机，将进程重新放到就绪队列队尾重新排队
+</code></pre></li>
+<li>若在一个时间片内未完成进程，则会被剥夺处理机，所以这个算法属于抢占式算法</li>
+<li>优点：公平，响应快，适用于分时操作系统</li>
 <li><p>取点：由于高频率的进程切换，因此有一定的开销：不区分任务的紧急程度</p>
 </li>
 <li><p>注意：如果时间片太大，那么每个进程有可能在一个时间片就能执行完成，那么时间片轮转算法就会转换为先来先</p>
 <pre><code>  服务调度算法，并且还会增大进程的响应时间。
   进程调度、切换是有时间代价的（保存，恢复运行环境），如果时间片太小，会导致进程切换过于频繁，那
-  么系统需要花大量时间来处理进程切换，从而导致实际用于执行进程时间比例减少</code></pre>
-</li>
+  么系统需要花大量时间来处理进程切换，从而导致实际用于执行进程时间比例减少
+</code></pre></li>
 </ul>
 </li>
 <li><p>优先级调度算法（优先数越大，优先级越高）</p>
 <ul>
-<li><p>非抢占式的优先级调度算法：每次调度时选择当前已到达且优先级最高的进程，当进程主动放弃处理机时发生调度</p>
-</li>
-<li><p>抢占式的优先级调度算法：每次调度时选择当前已到达且优先级最高的进程。当前进程主动放弃处理机时发生调度</p>
-<pre><code>                  另外，当就绪队列发生改变时也需要检查是否会发生抢占（是否有优先级较高的进程）</code></pre>
-</li>
-<li><p>算法思想：越来越多的计算机应用场景需要根据任务的紧急程度来决定处理顺序</p>
-</li>
-<li><p>算法规则：调用时选择优先级高的进程/作业</p>
-</li>
-<li><p>优点：用优先级区分紧急程度，重要程度，适用于实时操作系统。可以灵活调整对各种作业的偏好程度</p>
-</li>
+<li>非抢占式的优先级调度算法：每次调度时选择当前已到达且优先级最高的进程，当进程主动放弃处理机时发生调度</li>
+<li>抢占式的优先级调度算法：每次调度时选择当前已到达且优先级最高的进程。当前进程主动放弃处理机时发生调度<pre><code>                  另外，当就绪队列发生改变时也需要检查是否会发生抢占（是否有优先级较高的进程）
+</code></pre></li>
+<li>算法思想：越来越多的计算机应用场景需要根据任务的紧急程度来决定处理顺序</li>
+<li>算法规则：调用时选择优先级高的进程/作业</li>
+<li>优点：用优先级区分紧急程度，重要程度，适用于实时操作系统。可以灵活调整对各种作业的偏好程度</li>
 <li><p>缺点：若源源不断的优先级高的进程进来，可能会导致饥饿状态</p>
 </li>
 <li><p>补充：</p>
@@ -387,7 +369,7 @@ gtag('config', 'G-56QZV30ZCS');
 </ol>
 </li>
 </ol>
-</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">计算机操作系统</a><a class="post-meta__tags" href="/tags/%E6%A6%82%E5%BF%B5%E8%AF%A6%E8%BF%B0/">概念详述</a></div><div class="post_share"><div class="social-share" data-image="https://gitee.com/Wablers/images/raw/master/images/building.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button button--animated"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechat.jpg" alt="Wechat"/></a><div class="post-qr-code-desc">Wechat</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/alipay.jpg" alt="Alipay"/></a><div class="post-qr-code-desc">Alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/04/01/04-%E7%AE%A1%E7%A8%8B/"><img class="prev-cover" src="https://gitee.com/Wablers/images/raw/master/images/firework2.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">04-管程</div></div></a></div><div class="next-post pull-right"><a href="/2021/04/01/02-%E7%BA%BF%E7%A8%8B%E4%B8%8E%E8%BF%9B%E7%A8%8B/"><img class="next-cover" src="https://gitee.com/Wablers/images/raw/master/images/mountain.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">02-线程与进程</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2021/04/01/01-操作系统基本概念/" title="01-操作系统基本概念"><img class="cover" src="https://gitee.com/Wablers/images/raw/master/images/flower.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-04-01</div><div class="title">01-操作系统基本概念</div></div></a></div><div><a href="/2021/04/01/02-线程与进程/" title="02-线程与进程"><img class="cover" src="https://gitee.com/Wablers/images/raw/master/images/mountain.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-04-01</div><div class="title">02-线程与进程</div></div></a></div><div><a href="/2021/04/01/04-管程/" title="04-管程"><img class="cover" src="https://gitee.com/Wablers/images/raw/master/images/firework2.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-04-01</div><div class="title">04-管程</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Lin</div><div class="author-info__description">Share as You Wish to Update</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">35</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">33</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">12</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/LinFallen"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="mailto:wablers@163.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">Welcome to Blog of Wablers</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/01/16/%E5%AF%92%E5%81%87%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98%E2%80%94%E2%80%94%E5%A5%B6%E7%89%9B%E6%A3%92%E7%90%83/" title="寒假每日一题——奶牛棒球"><img src="https://gitee.com/Wablers/images/raw/master/images/bus.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="寒假每日一题——奶牛棒球"/></a><div class="content"><a class="title" href="/2022/01/16/%E5%AF%92%E5%81%87%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98%E2%80%94%E2%80%94%E5%A5%B6%E7%89%9B%E6%A3%92%E7%90%83/" title="寒假每日一题——奶牛棒球">寒假每日一题——奶牛棒球</a><time datetime="2022-01-16T03:54:10.000Z" title="发表于 2022-01-16 11:54:10">2022-01-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/01/07/Visual%20C++%20%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E9%A2%98%E5%BA%93%E5%8F%8A%E7%AD%94%E6%A1%88/" title="Visual C++ 程序设计题库及答案"><img src="https://gitee.com/Wablers/images/raw/master/images/bus.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Visual C++ 程序设计题库及答案"/></a><div class="content"><a class="title" href="/2022/01/07/Visual%20C++%20%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E9%A2%98%E5%BA%93%E5%8F%8A%E7%AD%94%E6%A1%88/" title="Visual C++ 程序设计题库及答案">Visual C++ 程序设计题库及答案</a><time datetime="2022-01-07T12:31:19.000Z" title="发表于 2022-01-07 20:31:19">2022-01-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/12/20/%E8%93%9D%E6%A1%A5%E6%9D%AF%E4%B9%8B%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84%E5%92%8C%E7%BA%BF%E6%AE%B5%E6%A0%91/" title="蓝桥杯之树状数组和线段树"><img src="https://gitee.com/Wablers/images/raw/master/images/forest.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="蓝桥杯之树状数组和线段树"/></a><div class="content"><a class="title" href="/2021/12/20/%E8%93%9D%E6%A1%A5%E6%9D%AF%E4%B9%8B%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84%E5%92%8C%E7%BA%BF%E6%AE%B5%E6%A0%91/" title="蓝桥杯之树状数组和线段树">蓝桥杯之树状数组和线段树</a><time datetime="2021-12-20T08:27:10.000Z" title="发表于 2021-12-20 16:27:10">2021-12-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/12/09/%E8%93%9D%E6%A1%A5%E6%9D%AF%E4%B9%8B%E6%95%B0%E5%AD%A6%E4%B8%8E%E7%AE%80%E5%8D%95DP/" title="蓝桥杯之数学与简单DP"><img src="https://gitee.com/Wablers/images/raw/master/images/flower.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="蓝桥杯之数学与简单DP"/></a><div class="content"><a class="title" href="/2021/12/09/%E8%93%9D%E6%A1%A5%E6%9D%AF%E4%B9%8B%E6%95%B0%E5%AD%A6%E4%B8%8E%E7%AE%80%E5%8D%95DP/" title="蓝桥杯之数学与简单DP">蓝桥杯之数学与简单DP</a><time datetime="2021-12-09T06:20:19.000Z" title="发表于 2021-12-09 14:20:19">2021-12-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/12/06/%E8%93%9D%E6%A1%A5%E6%9D%AF%E4%B9%8B%E4%BA%8C%E5%88%86%E4%B8%8E%E5%89%8D%E7%BC%80%E5%92%8C/" title="蓝桥杯之二分与前缀和"><img src="https://gitee.com/Wablers/images/raw/master/images/mountain.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="蓝桥杯之二分与前缀和"/></a><div class="content"><a class="title" href="/2021/12/06/%E8%93%9D%E6%A1%A5%E6%9D%AF%E4%B9%8B%E4%BA%8C%E5%88%86%E4%B8%8E%E5%89%8D%E7%BC%80%E5%92%8C/" title="蓝桥杯之二分与前缀和">蓝桥杯之二分与前缀和</a><time datetime="2021-12-06T06:23:15.000Z" title="发表于 2021-12-06 14:23:15">2021-12-06</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By Lin</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="chat_btn" type="button" title="rightside.chat_btn"><i class="fas fa-sms"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">计算机操作系统</a><a class="post-meta__tags" href="/tags/%E6%A6%82%E5%BF%B5%E8%AF%A6%E8%BF%B0/">概念详述</a></div><div class="post_share"><div class="social-share" data-image="https://gitee.com/Wablers/images/raw/master/images/firework2.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button button--animated"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechat.jpg" alt="Wechat"/></a><div class="post-qr-code-desc">Wechat</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/alipay.jpg" alt="Alipay"/></a><div class="post-qr-code-desc">Alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/04/01/04-%E7%AE%A1%E7%A8%8B/"><img class="prev-cover" src="https://gitee.com/Wablers/images/raw/master/images/bus.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">04-管程</div></div></a></div><div class="next-post pull-right"><a href="/2021/04/01/02-%E7%BA%BF%E7%A8%8B%E4%B8%8E%E8%BF%9B%E7%A8%8B/"><img class="next-cover" src="https://gitee.com/Wablers/images/raw/master/images/clean.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">02-线程与进程</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2021/04/01/01-操作系统基本概念/" title="01-操作系统基本概念"><img class="cover" src="https://gitee.com/Wablers/images/raw/master/images/building.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-04-01</div><div class="title">01-操作系统基本概念</div></div></a></div><div><a href="/2021/04/01/02-线程与进程/" title="02-线程与进程"><img class="cover" src="https://gitee.com/Wablers/images/raw/master/images/clean.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-04-01</div><div class="title">02-线程与进程</div></div></a></div><div><a href="/2021/04/01/04-管程/" title="04-管程"><img class="cover" src="https://gitee.com/Wablers/images/raw/master/images/bus.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-04-01</div><div class="title">04-管程</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Lin</div><div class="author-info__description">Share as You Wish to Update</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">35</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">33</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">12</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/LinFallen"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="mailto:wablers@163.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">Welcome to Blog of Wablers</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/01/16/%E5%AF%92%E5%81%87%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98%E2%80%94%E2%80%94%E5%A5%B6%E7%89%9B%E6%A3%92%E7%90%83/" title="寒假每日一题——奶牛棒球"><img src="https://gitee.com/Wablers/images/raw/master/images/bus.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="寒假每日一题——奶牛棒球"/></a><div class="content"><a class="title" href="/2022/01/16/%E5%AF%92%E5%81%87%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98%E2%80%94%E2%80%94%E5%A5%B6%E7%89%9B%E6%A3%92%E7%90%83/" title="寒假每日一题——奶牛棒球">寒假每日一题——奶牛棒球</a><time datetime="2022-01-16T03:54:10.000Z" title="发表于 2022-01-16 11:54:10">2022-01-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/01/07/Visual%20C++%20%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E9%A2%98%E5%BA%93%E5%8F%8A%E7%AD%94%E6%A1%88/" title="Visual C++ 程序设计题库及答案"><img src="https://gitee.com/Wablers/images/raw/master/images/firework2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Visual C++ 程序设计题库及答案"/></a><div class="content"><a class="title" href="/2022/01/07/Visual%20C++%20%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E9%A2%98%E5%BA%93%E5%8F%8A%E7%AD%94%E6%A1%88/" title="Visual C++ 程序设计题库及答案">Visual C++ 程序设计题库及答案</a><time datetime="2022-01-07T12:31:19.000Z" title="发表于 2022-01-07 20:31:19">2022-01-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/12/20/%E8%93%9D%E6%A1%A5%E6%9D%AF%E4%B9%8B%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84%E5%92%8C%E7%BA%BF%E6%AE%B5%E6%A0%91/" title="蓝桥杯之树状数组和线段树"><img src="https://gitee.com/Wablers/images/raw/master/images/forest.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="蓝桥杯之树状数组和线段树"/></a><div class="content"><a class="title" href="/2021/12/20/%E8%93%9D%E6%A1%A5%E6%9D%AF%E4%B9%8B%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84%E5%92%8C%E7%BA%BF%E6%AE%B5%E6%A0%91/" title="蓝桥杯之树状数组和线段树">蓝桥杯之树状数组和线段树</a><time datetime="2021-12-20T08:27:10.000Z" title="发表于 2021-12-20 16:27:10">2021-12-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/12/09/%E8%93%9D%E6%A1%A5%E6%9D%AF%E4%B9%8B%E6%95%B0%E5%AD%A6%E4%B8%8E%E7%AE%80%E5%8D%95DP/" title="蓝桥杯之数学与简单DP"><img src="https://gitee.com/Wablers/images/raw/master/images/clean.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="蓝桥杯之数学与简单DP"/></a><div class="content"><a class="title" href="/2021/12/09/%E8%93%9D%E6%A1%A5%E6%9D%AF%E4%B9%8B%E6%95%B0%E5%AD%A6%E4%B8%8E%E7%AE%80%E5%8D%95DP/" title="蓝桥杯之数学与简单DP">蓝桥杯之数学与简单DP</a><time datetime="2021-12-09T06:20:19.000Z" title="发表于 2021-12-09 14:20:19">2021-12-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/12/06/%E8%93%9D%E6%A1%A5%E6%9D%AF%E4%B9%8B%E4%BA%8C%E5%88%86%E4%B8%8E%E5%89%8D%E7%BC%80%E5%92%8C/" title="蓝桥杯之二分与前缀和"><img src="https://gitee.com/Wablers/images/raw/master/images/mountain.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="蓝桥杯之二分与前缀和"/></a><div class="content"><a class="title" href="/2021/12/06/%E8%93%9D%E6%A1%A5%E6%9D%AF%E4%B9%8B%E4%BA%8C%E5%88%86%E4%B8%8E%E5%89%8D%E7%BC%80%E5%92%8C/" title="蓝桥杯之二分与前缀和">蓝桥杯之二分与前缀和</a><time datetime="2021-12-06T06:23:15.000Z" title="发表于 2021-12-06 14:23:15">2021-12-06</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By Lin</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="chat_btn" type="button" title="rightside.chat_btn"><i class="fas fa-sms"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
   window.MathJax = {
     tex: {
       inlineMath: [ ['$','$'], ["\\(","\\)"]],

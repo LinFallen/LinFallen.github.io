@@ -1,18 +1,18 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>02-线程与进程 | Wablers</title><meta name="keywords" content="计算机操作系统,概念详述"><meta name="author" content="Lin"><meta name="copyright" content="Lin"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="1.进程的定义，组成，组织与特征    1. 进程的定义        * 程序：就是一个指令序列            * 单道程序：内存中只有一道程序            * 多道程序：内存中同时存入多道程序                * 为了方便操作系统管理，完成各程序并发执行，引入进程，进程实体概念。                * 系统为每个程序配置一个数据结构，称为进程控制块(">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>02-线程与进程 | Wablers</title><meta name="keywords" content="计算机操作系统,概念详述"><meta name="author" content="Lin"><meta name="copyright" content="Lin"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="1.进程的定义，组成，组织与特征 1. 进程的定义     * 程序：就是一个指令序列         * 单道程序：内存中只有一道程序         * 多道程序：内存中同时存入多道程序             * 为了方便操作系统管理，完成各程序并发执行，引入进程，进程实体概念。             * 系统为每个程序配置一个数据结构，称为进程控制块(PCB)，用来描述进程的各种信息（如">
 <meta property="og:type" content="article">
 <meta property="og:title" content="02-线程与进程">
 <meta property="og:url" content="http://example.com/2021/04/01/02-%E7%BA%BF%E7%A8%8B%E4%B8%8E%E8%BF%9B%E7%A8%8B/index.html">
 <meta property="og:site_name" content="Wablers">
-<meta property="og:description" content="1.进程的定义，组成，组织与特征    1. 进程的定义        * 程序：就是一个指令序列            * 单道程序：内存中只有一道程序            * 多道程序：内存中同时存入多道程序                * 为了方便操作系统管理，完成各程序并发执行，引入进程，进程实体概念。                * 系统为每个程序配置一个数据结构，称为进程控制块(">
+<meta property="og:description" content="1.进程的定义，组成，组织与特征 1. 进程的定义     * 程序：就是一个指令序列         * 单道程序：内存中只有一道程序         * 多道程序：内存中同时存入多道程序             * 为了方便操作系统管理，完成各程序并发执行，引入进程，进程实体概念。             * 系统为每个程序配置一个数据结构，称为进程控制块(PCB)，用来描述进程的各种信息（如">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://gitee.com/Wablers/images/raw/master/images/mountain.jpg">
+<meta property="og:image" content="https://gitee.com/Wablers/images/raw/master/images/clean.jpg">
 <meta property="article:published_time" content="2021-04-01T12:58:08.000Z">
 <meta property="article:modified_time" content="2021-04-01T13:06:55.323Z">
 <meta property="article:author" content="Lin">
 <meta property="article:tag" content="计算机操作系统">
 <meta property="article:tag" content="概念详述">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://gitee.com/Wablers/images/raw/master/images/mountain.jpg"><link rel="shortcut icon" href="/img/favicon.jpg"><link rel="canonical" href="http://example.com/2021/04/01/02-%E7%BA%BF%E7%A8%8B%E4%B8%8E%E8%BF%9B%E7%A8%8B/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+<meta name="twitter:image" content="https://gitee.com/Wablers/images/raw/master/images/clean.jpg"><link rel="shortcut icon" href="/img/favicon.jpg"><link rel="canonical" href="http://example.com/2021/04/01/02-%E7%BA%BF%E7%A8%8B%E4%B8%8E%E8%BF%9B%E7%A8%8B/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
 (function() {
   var hm = document.createElement("script");
   hm.src = "https://hm.baidu.com/hm.js?292a248418141690f958c1ffeccc9c3e";
@@ -159,8 +159,14 @@ gtag('config', 'G-56QZV30ZCS');
       }
     }
     detectApple()
-    })(window)</script><meta name="generator" content="Hexo 5.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">35</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">33</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">12</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://gitee.com/Wablers/images/raw/master/images/mountain.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Wablers</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">02-线程与进程</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-04-01T12:58:08.000Z" title="发表于 2021-04-01 20:58:08">2021-04-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-04-01T13:06:55.323Z" title="更新于 2021-04-01 21:06:55">2021-04-01</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">计算机操作系统</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="02-线程与进程"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>1.进程的定义，组成，组织与特征<br>    1. 进程的定义<br>        * 程序：就是一个指令序列<br>            * 单道程序：内存中只有一道程序<br>            * 多道程序：内存中同时存入多道程序<br>                * 为了方便操作系统管理，完成各程序并发执行，引入进程，进程实体概念。<br>                * 系统为每个程序配置一个数据结构，称为进程控制块(PCB)，用来描述进程的各种信息（如程序代码放置的位置）</p>
-<ul>
+    })(window)</script><meta name="generator" content="Hexo 5.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">35</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">33</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">12</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://gitee.com/Wablers/images/raw/master/images/clean.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Wablers</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">02-线程与进程</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-04-01T12:58:08.000Z" title="发表于 2021-04-01 20:58:08">2021-04-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-04-01T13:06:55.323Z" title="更新于 2021-04-01 21:06:55">2021-04-01</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">计算机操作系统</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="02-线程与进程"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>1.进程的定义，组成，组织与特征</p>
+<pre><code>1. 进程的定义
+    * 程序：就是一个指令序列
+        * 单道程序：内存中只有一道程序
+        * 多道程序：内存中同时存入多道程序
+            * 为了方便操作系统管理，完成各程序并发执行，引入进程，进程实体概念。
+            * 系统为每个程序配置一个数据结构，称为进程控制块(PCB)，用来描述进程的各种信息（如程序代码放置的位置）
+</code></pre><ul>
 <li><p>定义：进程实体（进程映像）由PCB，程序段，数据段三部分组成。一般情况下，我们把进程实体就简称为进程。例如：所谓</p>
 <pre><code>     创建进程，实质上是创建进程实体中的PCB，而撤销进程，实质上是撤销进程实体中的PCB
 
@@ -171,10 +177,10 @@ gtag('config', 'G-56QZV30ZCS');
          3. 进程是具有独立功能的程序在数据集合上运行的过程，它是系统进行资源分配和调度的一个独立单位
 
      总而言之，进程就是进程实体的运行过程，是系统进行资源分配和调度的一个独立单位。进程实体是静态的，进程是
-     动态的。</code></pre>
-</li>
+     动态的。
+</code></pre></li>
 </ul>
-<ol start="2">
+<ol>
 <li><p>进程的组成（进程内部由什么构成）</p>
 <ul>
 <li>进程由程序段，数据段，进程控制块（PCB）组成<ul>
@@ -242,14 +248,10 @@ gtag('config', 'G-56QZV30ZCS');
 </li>
 <li><p>进程的特征</p>
 <ul>
-<li><p>动态性（最基本的特征）：进程是程序的一次执行过程，是动态的产生，变化和消亡的</p>
-</li>
-<li><p>并发性：内存中有多个并发实体，各进程可以并发执行</p>
-</li>
-<li><p>独立性：进程是能独立运行，独立获得资源，独立接受调度的基本单位</p>
-</li>
-<li><p>异步性：各进程按各自独立，不可预知的速度向前推进，操作系统要提供“进程同步”来解决异步问题</p>
-</li>
+<li>动态性（最基本的特征）：进程是程序的一次执行过程，是动态的产生，变化和消亡的</li>
+<li>并发性：内存中有多个并发实体，各进程可以并发执行</li>
+<li>独立性：进程是能独立运行，独立获得资源，独立接受调度的基本单位</li>
+<li>异步性：各进程按各自独立，不可预知的速度向前推进，操作系统要提供“进程同步”来解决异步问题</li>
 <li><p>结构性：每个进程都会配置一个PCB。结构上看，进程由程序段，数据段，进程控制块（PCB）组成</p>
 <p>注意：进程是资源分配，接受调度的基本单位 </p>
 </li>
@@ -261,8 +263,8 @@ gtag('config', 'G-56QZV30ZCS');
 <ul>
 <li>三种基本状态<ol>
 <li>运行状态（Running）：占有CPU，并在CPU上运行。注意：单核CPU在同一时刻只能有单个进程运行</li>
-<li>就绪状态（Ready）：已经具备运行条件，但是没有空闲的CPU，不能运行。这个阶段除了没有处理机其余资源都<pre><code>             具备</code></pre>
-</li>
+<li>就绪状态（Ready）：已经具备运行条件，但是没有空闲的CPU，不能运行。这个阶段除了没有处理机其余资源都<pre><code>             具备
+</code></pre></li>
 <li>阻塞状态（Waiting/Blocked）：因等待某一事件而不能运行。如等待操作系统分配打印机</li>
 </ol>
 </li>
@@ -280,8 +282,8 @@ gtag('config', 'G-56QZV30ZCS');
 <pre><code>  * 运行态转换为阻塞态，是进程主动的，是因为该进程需要系统调用其他资源。而阻塞态转换为就绪态是被动的，
     因为进程在被动等待资源分配到位。
   * 不能由阻塞态直接转换为运行态，这是因为资源未被分配到位。也不能由就绪态直接转换为阻塞态。因为进入
-    阻塞态是进程主动请求的，必须在进程运行时，才能发出请求</code></pre>
-</li>
+    阻塞态是进程主动请求的，必须在进程运行时，才能发出请求
+</code></pre></li>
 </ul>
 </li>
 </ol>
@@ -290,14 +292,13 @@ gtag('config', 'G-56QZV30ZCS');
 <ol>
 <li><p>基本概念</p>
 <ul>
-<li>概念：进程控制就是对系统中的所有进程进行有效的管理，具有创建进程，撤销已有进程和实现进程之间转换的功能<pre><code>  也就是说，进程控制就是要实现进程间的转换</code></pre>
-</li>
+<li>概念：进程控制就是对系统中的所有进程进行有效的管理，具有创建进程，撤销已有进程和实现进程之间转换的功能<pre><code>  也就是说，进程控制就是要实现进程间的转换
+</code></pre></li>
 </ul>
 </li>
 <li><p>进程控制相关的原语</p>
 <ul>
-<li><p>特点：执行期间不允许中断，只能一气呵成</p>
-</li>
+<li>特点：执行期间不允许中断，只能一气呵成</li>
 <li><p>注意：原语通过“关中断指令”和“开中断指令”来实现</p>
 </li>
 <li><p>进程控制会导致进程状态的转换。原语必须做的三件事：</p>
@@ -410,8 +411,8 @@ gtag('config', 'G-56QZV30ZCS');
 <pre><code> 1. 基于数据结构的共享
      这种方式速度慢，限制多，是一种低级通信方式
  2. 基于存储区的共享
-     在相比之下，这种方式速度更快，是一种高级通信方式</code></pre>
-<ul>
+     在相比之下，这种方式速度更快，是一种高级通信方式
+</code></pre><ul>
 <li><p>管道通信</p>
 <ul>
 <li>管道通信只能采用半双工通信，要向实现双向同时通信，需要设置两个管道</li>
@@ -421,8 +422,8 @@ gtag('config', 'G-56QZV30ZCS');
 </ul>
 </li>
 <li><p>消息传递：进程间的数据的交换以格式化消息为单位。进程通过操作系统提供的“发送/接收消息”两个原语</p>
-<pre><code>     进行数据交换。传递结构化的消息（消息头，消息体）</code></pre>
-<ol>
+<pre><code>     进行数据交换。传递结构化的消息（消息头，消息体）
+</code></pre><ol>
 <li>直接通信方式<br> 消息直接挂到接收进程消息缓冲队列上</li>
 <li>间接通信方式<br> 消息需要先发送到中间实体中（信箱）进程1使用发送原语发送，进程2通过接收原语接收</li>
 </ol>
@@ -437,8 +438,8 @@ gtag('config', 'G-56QZV30ZCS');
  * 在引入线程之前，进程是最小执行单元，之后线程是最小执行单元
  * 概念：线程是一个基本的CPU执行单元，也是程序执行流的最小单位
  * 在引入线程之后，不仅线程能够并发，进程内的各线程也可以并发。在引入线程后，进程只作为除CPU之外的系
-   统资源的分配单元</code></pre>
-<ol start="2">
+   统资源的分配单元
+</code></pre><ol>
 <li><p>线程带来的变化</p>
 <ul>
 <li>资源分配、调度<br>  在传统进程机制中，进程是资源分配，调度的基本单位。引入线程后，进程是资源分配的基本单位，线程是<br>  调度的基本单位。</li>
@@ -461,8 +462,7 @@ gtag('config', 'G-56QZV30ZCS');
 </li>
 <li><p>线程的实现方式</p>
 <ul>
-<li><p>用户级线程（User-Level Thread）<br>  它是由应用程序通过线程库实现的。所有的线程管理工作都由应用程序负责。用户级线程中，线程切换可以在<br>  用户态下完成，无需系统的干预。在用户看来是有多个线程的，但是在操作系统内核看来，并意识不到线程的<br>  存在（用户级线程对用户不透明，对操作系统透明）<br>  用户级线程就是“从用户视角看到能看到的线程”</p>
-</li>
+<li>用户级线程（User-Level Thread）<br>  它是由应用程序通过线程库实现的。所有的线程管理工作都由应用程序负责。用户级线程中，线程切换可以在<br>  用户态下完成，无需系统的干预。在用户看来是有多个线程的，但是在操作系统内核看来，并意识不到线程的<br>  存在（用户级线程对用户不透明，对操作系统透明）<br>  用户级线程就是“从用户视角看到能看到的线程”</li>
 <li><p>内核级线程（Kernrl-Level Thread）<br>  内核级线程的管理工作由操作系统内核完成，线程的调度，以及切换等工作都是内核负责，因此内核级线程的<br>  切换需要在核心态下完成<br>  内核级线程就是“从操作系统内核视角看能看到的线程”</p>
 </li>
 <li><p>注意：操作系统只看得见内核级线程，因此只有内核级线程才是处理机分配的单位</p>
@@ -473,12 +473,12 @@ gtag('config', 'G-56QZV30ZCS');
 </li>
 <li><p>分类：</p>
 <ol>
-<li>多对一模型：多个用户级线程映射到一个内核级线程，每个用户级线程只对应一个用户级线程<br> 优点：用户级线程的切换在用户空间即可完成，不需要切换到核心态，线程管理的开销小，效率高<br> 缺点：当一个用户级线程被阻塞后，整个进程都会被阻塞，并发度不高，多个线程不可在多核处理机<pre><code>   上运行</code></pre>
-</li>
-<li>一对一模型：一个用户级线程映射到一个内核级线程，每个用户进程有与用户级线程同数量的内核级线程<br> 优点：当一个线程被阻塞后其他线程还能被执行，并发能力强，多线程可以在多核处理机上并行执行<br> 缺点：一个用户级线程会占用多个内核几线程，线程切换由内核完成，需要切换到核心态，因此，线程<pre><code>   的管理成本高，开销大</code></pre>
-</li>
-<li>多对多线程：n个用户级线程映射到m个内核级线程，每个用户级线程对应一个内核级线程<br> 优点：克服多对一模型并发度不高的缺点，又克服了一对一模型中一个用户级线程占用太多内核级线程<pre><code>  开销太大的缺点</code></pre>
-</li>
+<li>多对一模型：多个用户级线程映射到一个内核级线程，每个用户级线程只对应一个用户级线程<br> 优点：用户级线程的切换在用户空间即可完成，不需要切换到核心态，线程管理的开销小，效率高<br> 缺点：当一个用户级线程被阻塞后，整个进程都会被阻塞，并发度不高，多个线程不可在多核处理机<pre><code>   上运行
+</code></pre></li>
+<li>一对一模型：一个用户级线程映射到一个内核级线程，每个用户进程有与用户级线程同数量的内核级线程<br> 优点：当一个线程被阻塞后其他线程还能被执行，并发能力强，多线程可以在多核处理机上并行执行<br> 缺点：一个用户级线程会占用多个内核几线程，线程切换由内核完成，需要切换到核心态，因此，线程<pre><code>   的管理成本高，开销大
+</code></pre></li>
+<li>多对多线程：n个用户级线程映射到m个内核级线程，每个用户级线程对应一个内核级线程<br> 优点：克服多对一模型并发度不高的缺点，又克服了一对一模型中一个用户级线程占用太多内核级线程<pre><code>  开销太大的缺点
+</code></pre></li>
 </ol>
 </li>
 </ul>
@@ -488,7 +488,7 @@ gtag('config', 'G-56QZV30ZCS');
 </ol>
 </li>
 </ol>
-</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">计算机操作系统</a><a class="post-meta__tags" href="/tags/%E6%A6%82%E5%BF%B5%E8%AF%A6%E8%BF%B0/">概念详述</a></div><div class="post_share"><div class="social-share" data-image="https://gitee.com/Wablers/images/raw/master/images/mountain.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button button--animated"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechat.jpg" alt="Wechat"/></a><div class="post-qr-code-desc">Wechat</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/alipay.jpg" alt="Alipay"/></a><div class="post-qr-code-desc">Alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/04/01/03-%E5%A4%84%E7%90%86%E6%9C%BA%E8%B0%83%E5%BA%A6/"><img class="prev-cover" src="https://gitee.com/Wablers/images/raw/master/images/building.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">03-处理机调度</div></div></a></div><div class="next-post pull-right"><a href="/2021/04/01/01-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/"><img class="next-cover" src="https://gitee.com/Wablers/images/raw/master/images/flower.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">01-操作系统基本概念</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2021/04/01/01-操作系统基本概念/" title="01-操作系统基本概念"><img class="cover" src="https://gitee.com/Wablers/images/raw/master/images/flower.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-04-01</div><div class="title">01-操作系统基本概念</div></div></a></div><div><a href="/2021/04/01/03-处理机调度/" title="03-处理机调度"><img class="cover" src="https://gitee.com/Wablers/images/raw/master/images/building.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-04-01</div><div class="title">03-处理机调度</div></div></a></div><div><a href="/2021/04/01/04-管程/" title="04-管程"><img class="cover" src="https://gitee.com/Wablers/images/raw/master/images/firework2.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-04-01</div><div class="title">04-管程</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Lin</div><div class="author-info__description">Share as You Wish to Update</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">35</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">33</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">12</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/LinFallen"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="mailto:wablers@163.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">Welcome to Blog of Wablers</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/01/16/%E5%AF%92%E5%81%87%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98%E2%80%94%E2%80%94%E5%A5%B6%E7%89%9B%E6%A3%92%E7%90%83/" title="寒假每日一题——奶牛棒球"><img src="https://gitee.com/Wablers/images/raw/master/images/bus.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="寒假每日一题——奶牛棒球"/></a><div class="content"><a class="title" href="/2022/01/16/%E5%AF%92%E5%81%87%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98%E2%80%94%E2%80%94%E5%A5%B6%E7%89%9B%E6%A3%92%E7%90%83/" title="寒假每日一题——奶牛棒球">寒假每日一题——奶牛棒球</a><time datetime="2022-01-16T03:54:10.000Z" title="发表于 2022-01-16 11:54:10">2022-01-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/01/07/Visual%20C++%20%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E9%A2%98%E5%BA%93%E5%8F%8A%E7%AD%94%E6%A1%88/" title="Visual C++ 程序设计题库及答案"><img src="https://gitee.com/Wablers/images/raw/master/images/bus.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Visual C++ 程序设计题库及答案"/></a><div class="content"><a class="title" href="/2022/01/07/Visual%20C++%20%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E9%A2%98%E5%BA%93%E5%8F%8A%E7%AD%94%E6%A1%88/" title="Visual C++ 程序设计题库及答案">Visual C++ 程序设计题库及答案</a><time datetime="2022-01-07T12:31:19.000Z" title="发表于 2022-01-07 20:31:19">2022-01-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/12/20/%E8%93%9D%E6%A1%A5%E6%9D%AF%E4%B9%8B%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84%E5%92%8C%E7%BA%BF%E6%AE%B5%E6%A0%91/" title="蓝桥杯之树状数组和线段树"><img src="https://gitee.com/Wablers/images/raw/master/images/forest.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="蓝桥杯之树状数组和线段树"/></a><div class="content"><a class="title" href="/2021/12/20/%E8%93%9D%E6%A1%A5%E6%9D%AF%E4%B9%8B%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84%E5%92%8C%E7%BA%BF%E6%AE%B5%E6%A0%91/" title="蓝桥杯之树状数组和线段树">蓝桥杯之树状数组和线段树</a><time datetime="2021-12-20T08:27:10.000Z" title="发表于 2021-12-20 16:27:10">2021-12-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/12/09/%E8%93%9D%E6%A1%A5%E6%9D%AF%E4%B9%8B%E6%95%B0%E5%AD%A6%E4%B8%8E%E7%AE%80%E5%8D%95DP/" title="蓝桥杯之数学与简单DP"><img src="https://gitee.com/Wablers/images/raw/master/images/flower.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="蓝桥杯之数学与简单DP"/></a><div class="content"><a class="title" href="/2021/12/09/%E8%93%9D%E6%A1%A5%E6%9D%AF%E4%B9%8B%E6%95%B0%E5%AD%A6%E4%B8%8E%E7%AE%80%E5%8D%95DP/" title="蓝桥杯之数学与简单DP">蓝桥杯之数学与简单DP</a><time datetime="2021-12-09T06:20:19.000Z" title="发表于 2021-12-09 14:20:19">2021-12-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/12/06/%E8%93%9D%E6%A1%A5%E6%9D%AF%E4%B9%8B%E4%BA%8C%E5%88%86%E4%B8%8E%E5%89%8D%E7%BC%80%E5%92%8C/" title="蓝桥杯之二分与前缀和"><img src="https://gitee.com/Wablers/images/raw/master/images/mountain.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="蓝桥杯之二分与前缀和"/></a><div class="content"><a class="title" href="/2021/12/06/%E8%93%9D%E6%A1%A5%E6%9D%AF%E4%B9%8B%E4%BA%8C%E5%88%86%E4%B8%8E%E5%89%8D%E7%BC%80%E5%92%8C/" title="蓝桥杯之二分与前缀和">蓝桥杯之二分与前缀和</a><time datetime="2021-12-06T06:23:15.000Z" title="发表于 2021-12-06 14:23:15">2021-12-06</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By Lin</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="chat_btn" type="button" title="rightside.chat_btn"><i class="fas fa-sms"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">计算机操作系统</a><a class="post-meta__tags" href="/tags/%E6%A6%82%E5%BF%B5%E8%AF%A6%E8%BF%B0/">概念详述</a></div><div class="post_share"><div class="social-share" data-image="https://gitee.com/Wablers/images/raw/master/images/clean.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button button--animated"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechat.jpg" alt="Wechat"/></a><div class="post-qr-code-desc">Wechat</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/alipay.jpg" alt="Alipay"/></a><div class="post-qr-code-desc">Alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/04/01/03-%E5%A4%84%E7%90%86%E6%9C%BA%E8%B0%83%E5%BA%A6/"><img class="prev-cover" src="https://gitee.com/Wablers/images/raw/master/images/firework2.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">03-处理机调度</div></div></a></div><div class="next-post pull-right"><a href="/2021/04/01/01-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/"><img class="next-cover" src="https://gitee.com/Wablers/images/raw/master/images/building.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">01-操作系统基本概念</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2021/04/01/01-操作系统基本概念/" title="01-操作系统基本概念"><img class="cover" src="https://gitee.com/Wablers/images/raw/master/images/building.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-04-01</div><div class="title">01-操作系统基本概念</div></div></a></div><div><a href="/2021/04/01/03-处理机调度/" title="03-处理机调度"><img class="cover" src="https://gitee.com/Wablers/images/raw/master/images/firework2.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-04-01</div><div class="title">03-处理机调度</div></div></a></div><div><a href="/2021/04/01/04-管程/" title="04-管程"><img class="cover" src="https://gitee.com/Wablers/images/raw/master/images/bus.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-04-01</div><div class="title">04-管程</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Lin</div><div class="author-info__description">Share as You Wish to Update</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">35</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">33</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">12</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/LinFallen"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="mailto:wablers@163.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">Welcome to Blog of Wablers</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/01/16/%E5%AF%92%E5%81%87%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98%E2%80%94%E2%80%94%E5%A5%B6%E7%89%9B%E6%A3%92%E7%90%83/" title="寒假每日一题——奶牛棒球"><img src="https://gitee.com/Wablers/images/raw/master/images/bus.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="寒假每日一题——奶牛棒球"/></a><div class="content"><a class="title" href="/2022/01/16/%E5%AF%92%E5%81%87%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98%E2%80%94%E2%80%94%E5%A5%B6%E7%89%9B%E6%A3%92%E7%90%83/" title="寒假每日一题——奶牛棒球">寒假每日一题——奶牛棒球</a><time datetime="2022-01-16T03:54:10.000Z" title="发表于 2022-01-16 11:54:10">2022-01-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/01/07/Visual%20C++%20%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E9%A2%98%E5%BA%93%E5%8F%8A%E7%AD%94%E6%A1%88/" title="Visual C++ 程序设计题库及答案"><img src="https://gitee.com/Wablers/images/raw/master/images/firework2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Visual C++ 程序设计题库及答案"/></a><div class="content"><a class="title" href="/2022/01/07/Visual%20C++%20%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E9%A2%98%E5%BA%93%E5%8F%8A%E7%AD%94%E6%A1%88/" title="Visual C++ 程序设计题库及答案">Visual C++ 程序设计题库及答案</a><time datetime="2022-01-07T12:31:19.000Z" title="发表于 2022-01-07 20:31:19">2022-01-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/12/20/%E8%93%9D%E6%A1%A5%E6%9D%AF%E4%B9%8B%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84%E5%92%8C%E7%BA%BF%E6%AE%B5%E6%A0%91/" title="蓝桥杯之树状数组和线段树"><img src="https://gitee.com/Wablers/images/raw/master/images/forest.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="蓝桥杯之树状数组和线段树"/></a><div class="content"><a class="title" href="/2021/12/20/%E8%93%9D%E6%A1%A5%E6%9D%AF%E4%B9%8B%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84%E5%92%8C%E7%BA%BF%E6%AE%B5%E6%A0%91/" title="蓝桥杯之树状数组和线段树">蓝桥杯之树状数组和线段树</a><time datetime="2021-12-20T08:27:10.000Z" title="发表于 2021-12-20 16:27:10">2021-12-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/12/09/%E8%93%9D%E6%A1%A5%E6%9D%AF%E4%B9%8B%E6%95%B0%E5%AD%A6%E4%B8%8E%E7%AE%80%E5%8D%95DP/" title="蓝桥杯之数学与简单DP"><img src="https://gitee.com/Wablers/images/raw/master/images/clean.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="蓝桥杯之数学与简单DP"/></a><div class="content"><a class="title" href="/2021/12/09/%E8%93%9D%E6%A1%A5%E6%9D%AF%E4%B9%8B%E6%95%B0%E5%AD%A6%E4%B8%8E%E7%AE%80%E5%8D%95DP/" title="蓝桥杯之数学与简单DP">蓝桥杯之数学与简单DP</a><time datetime="2021-12-09T06:20:19.000Z" title="发表于 2021-12-09 14:20:19">2021-12-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/12/06/%E8%93%9D%E6%A1%A5%E6%9D%AF%E4%B9%8B%E4%BA%8C%E5%88%86%E4%B8%8E%E5%89%8D%E7%BC%80%E5%92%8C/" title="蓝桥杯之二分与前缀和"><img src="https://gitee.com/Wablers/images/raw/master/images/mountain.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="蓝桥杯之二分与前缀和"/></a><div class="content"><a class="title" href="/2021/12/06/%E8%93%9D%E6%A1%A5%E6%9D%AF%E4%B9%8B%E4%BA%8C%E5%88%86%E4%B8%8E%E5%89%8D%E7%BC%80%E5%92%8C/" title="蓝桥杯之二分与前缀和">蓝桥杯之二分与前缀和</a><time datetime="2021-12-06T06:23:15.000Z" title="发表于 2021-12-06 14:23:15">2021-12-06</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By Lin</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="chat_btn" type="button" title="rightside.chat_btn"><i class="fas fa-sms"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
   window.MathJax = {
     tex: {
       inlineMath: [ ['$','$'], ["\\(","\\)"]],
